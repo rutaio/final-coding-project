@@ -1,0 +1,67 @@
+import './product-details.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { apiForProducts } from '../../constants/globalProductsApi';
+import { Product } from '../../types/ProductTypes';
+
+export const ProductDetails = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [product, setProduct] = useState<Product | null>(null);
+
+  const handleBackClick = () => {
+    navigate('/');
+  };
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        const response = await axios.get(`${apiForProducts}/${id}`);
+        setProduct(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchCars();
+  }, []);
+
+  if (!product) {
+    return <div>No such a product in our collection!</div>;
+  }
+
+  return (
+    <div className="product-detail">
+      <div className="product-detail-container">
+        <div className="product-detail-left">
+          <img
+            src={product.image}
+            alt="Product cover image"
+            className="product-detail-image"
+          />
+        </div>
+
+        <div className="product-detail-right">
+          <div className="product-header">
+            <h2>{product.title}</h2>
+          </div>
+          <div className="product-description">
+            <p>{product.description}</p>
+          </div>
+          <div className="product-materials">
+            <p>{product.materials}</p>
+          </div>
+          <div className="product-actions">
+            <button className="button button-primary">Contribute to this Story</button>
+            <button
+              className="button button-secondary"
+              onClick={handleBackClick}
+            >
+              Go back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

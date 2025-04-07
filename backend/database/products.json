@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "image": "https://pranamat.eco/dist/design/home/materials/material_1.jpg",
+    "title": "Pillow That Hurts",
+    "description": "A portable pillow with spikes. It is used at home when a person is laying down during a day or sitting in the chair. It is used to reduce fatigue, boost the mood, and more.",
+    "materials": "linen, plastic, seeds",
+    "how many people used": "100 000"
+  },
+  {
+    "id": "2",
+    "image": "https://cdn.prod.website-files.com/6489751d2099bd329cd95c40/65c14ca541be77d2e67127b3_Asset%204.png",
+    "title": "Monk In Your Ears",
+    "description": "A library of sounds and voices that a person can carry with them. It is used as an educational tool. Person listens to instructions on how to breathe slowly and experience feelings such as awareness, gratitude, and more.",
+    "materials": "hardware, software",
+    "how many people used": "3 000 000"
+  },
+  {
+    "id": "3",
+    "image": "https://www.androidauthority.com/wp-content/uploads/2025/03/finch-app-hero-scaled.jpeg",
+    "title": "Virtual Pet",
+    "description": "A mini game that a person can carry with them. It is used as an educational tool. Person is reminded to register their repeatable actions on this tool many times throughout a day and in exchange the person receives virtual rewards that boost their mood.",
+    "materials": "hardware, software",
+    "how many people used": "500 000"
+  },
+  {
+    "id": "4",
+    "image": "https://m.media-amazon.com/images/I/7167clBlzNL.jpg",
+    "title": "Mask for Sleep",
+    "description": "A fashionable piece worn on the head to cover the eyes. It is used during sleep. It reduces the light entering human eyes and helps to enjoy a feeling of darkness.",
+    "materials": "silk",
+    "how many people used": "10 000"
+  },
+  {
+    "id": "5",
+    "image": "https://static.thcdn.com/productimg/0/960/960/57/10245357-1400832724-813320.jpg",
+    "title": "White Mud Boots",
+    "description": "A fashionable piece worn on the feet. It is used not just for rainy days but also when a person is anxious about insects outside.",
+    "materials": "rubber, plastic",
+    "how many people used": "4 000 000"
+  },
+  {
+    "id": "6",
+    "image": "https://m.media-amazon.com/images/I/51OmfnAc8DL._AC_UF894,1000_QL80_.jpg",
+    "title": "Noise Protector",
+    "description": "A multi-purpose device worn on the head to cover the ears. It is used for sleep, during walks in the city and at work. It helps to cancel the noise and enjoy the silence.",
+    "materials": "harware, plastic, leather",
+    "how many people used": "1 000 000"
+  }
+]
