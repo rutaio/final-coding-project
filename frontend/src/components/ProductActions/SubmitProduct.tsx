@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { apiForProducts } from '../../constants/globalProductsApi';
+import { API_URL } from '../../constants/global';
 
 export const SubmitProduct = () => {
   const [image, setImage] = useState('');
@@ -10,7 +10,7 @@ export const SubmitProduct = () => {
 
   const handleSubmit = async (event) => {
     event.preventDeafult();
-    await axios.post(apiForProducts, {
+    await axios.post(API_URL, {
       image,
       title,
       description,

@@ -1,7 +1,7 @@
 import './product-list.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { apiForProducts } from '../../constants/globalProductsApi';
+import { API_URL } from '../../constants/global';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/ProductTypes';
 
@@ -11,7 +11,7 @@ export const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(apiForProducts);
+        const response = await axios.get(`${API_URL}/products`);
         setProducts(response.data);
       } catch (error) {
         console.log(error);

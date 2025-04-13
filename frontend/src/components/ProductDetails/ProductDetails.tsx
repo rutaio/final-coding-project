@@ -2,7 +2,7 @@ import './product-details.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { apiForProducts } from '../../constants/globalProductsApi';
+import { API_URL } from '../../constants/global';
 import { Product } from '../../types/ProductTypes';
 
 export const ProductDetails = () => {
@@ -17,7 +17,7 @@ export const ProductDetails = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await axios.get(`${apiForProducts}/${id}`);
+        const response = await axios.get(`${API_URL}/products/${id}`);
         setProduct(response.data);
       } catch (error) {
         console.log(error);
