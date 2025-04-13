@@ -1,32 +1,41 @@
 import { useState } from 'react';
 import axios from 'axios';
-import {apiForContact} from '../../../constants/globalContactApi';
+import { API_URL } from '../../../constants/global';
 
-export const ContactForm = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+interface ContactFormProps {
+  onSubmit: () => void;
+}
 
-  const handleSubmit = async (event) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
+  // I capture inputs from contact form:
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
+
+  // I'm sending the data:
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     //console.log(name, email, message);
     try {
-      await axios.post(apiForContact, {
+      await axios.post(`${API_URL}/messages`, {
         name,
         email,
         message,
       });
-    } catch (error) {
-      console.error('error');
+      // if request is successful, I call a function from ContactPage:
+      onSubmit();
+    } catch (error: any) {
+      console.error('Failed to send message:', error);
     } finally {
       setName('');
       setEmail('');
       setMessage('');
+      console.log('Thank you for your message!');
     }
   };
 
   return (
-    <form action="contact-form" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Your Name"

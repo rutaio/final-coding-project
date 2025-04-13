@@ -1,1 +1,0 @@
-export const apiForContact = 'http://localhost:3000/api/messages';
