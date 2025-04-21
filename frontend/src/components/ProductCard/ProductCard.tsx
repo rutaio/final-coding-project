@@ -10,7 +10,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate(`/products/${product.id}`);
+    navigate(`/products/${product._id}`);
   };
 
   return (

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { apiForProducts } from '../../constants/globalProductsApi';
+import { API_URL } from '../../constants/global';
 
 export const EditProduct = ({ handleCancelClick, productContent }) => {
   const [image, setImage] = useState(productContent.image);
@@ -8,9 +8,9 @@ export const EditProduct = ({ handleCancelClick, productContent }) => {
   const [description, setDescription] = useState(productContent.description);
   const [materials, setMaterials] = useState(productContent.materials);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    await axios.put(`${apiForProducts}/${productContent.id}`, {
+    await axios.put(`${API_URL}/products/${productContent._id}`, {
       image,
       title,
       description,

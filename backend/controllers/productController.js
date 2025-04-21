@@ -1,6 +1,6 @@
 const Product = require('../models/productModel');
 
-// why postman does not show all data that is on mongo db?
+// works on postman
 exports.getProducts = async (req, res) => {
   try {
     const products = await Product.find();
@@ -10,7 +10,7 @@ exports.getProducts = async (req, res) => {
   }
 };
 
-// why postman does not find product by id?
+// works on postman
 exports.getProductById = async (req, res) => {
   try {
     const id = req.params.id;

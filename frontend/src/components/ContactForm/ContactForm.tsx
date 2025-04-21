@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../../../constants/global';
+import { API_URL } from '../../constants/global';
 
 interface ContactFormProps {
   onSubmit: () => void;

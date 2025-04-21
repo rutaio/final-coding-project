@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 
-// not really works on postman...
+// postman returns a server error, but it creates a user in mongo..
 exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -35,6 +35,7 @@ exports.register = async (req, res) => {
   }
 };
 
+// if a POST request is used on postman at login, it returns access token
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -71,7 +72,8 @@ exports.login = async (req, res) => {
   }
 };
 
-// not tested on postman 
+// if a GET request is used on postman at /auth/user/id, it returns error 404
+// am I testing in a wrong way?
 exports.getCurrentUser = async (req, res) => {
   try {
     const token = req.header('Authorization')?.replace('Bearer ', '');

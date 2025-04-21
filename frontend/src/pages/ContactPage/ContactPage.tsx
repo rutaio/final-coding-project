@@ -1,6 +1,6 @@
 import '../ContactPage/contact.css';
-import { ContactForm } from './components/ContactForm';
-import { ContactsInfo } from './components/ContactsInfo';
+import { ContactForm } from '../../components/ContactForm/ContactForm';
+import { ContactsInfo } from '../../components/ContactForm/ContactsInfo';
 
 export const ContactsPage = () => {
 

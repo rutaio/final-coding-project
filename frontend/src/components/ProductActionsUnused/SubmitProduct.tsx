@@ -8,8 +8,8 @@ export const SubmitProduct = () => {
   const [description, setDescription] = useState('');
   const [materials, setMaterials] = useState('');
 
-  const handleSubmit = async (event) => {
-    event.preventDeafult();
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     await axios.post(API_URL, {
       image,
       title,

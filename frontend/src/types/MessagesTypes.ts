@@ -1,5 +1,6 @@
 export interface Messages {
-    name: string;
-    email: string;
-    message: string;
-  }
+  _id: string;
+  name: string;
+  email: string;
+  message: string;
+}

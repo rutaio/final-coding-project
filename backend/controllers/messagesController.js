@@ -36,7 +36,7 @@
 
 const Message = require('../models/messagesModel');
 
-// postman returns []
+// works on postman
 exports.getMessages = async (req, res) => {
   try {
     const messages = await Message.find();

@@ -11,7 +11,7 @@ export const ProductDetails = () => {
   const [product, setProduct] = useState<Product | null>(null);
 
   const handleBackClick = () => {
-    navigate('/');
+    navigate('/collection');
   };
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export const ProductDetails = () => {
       <div className="product-detail-container">
         <div className="product-detail-left">
           <img
-            src={product.image}
+            src={product?.image}
             alt="Product cover image"
             className="product-detail-image"
           />
@@ -43,13 +43,13 @@ export const ProductDetails = () => {
 
         <div className="product-detail-right">
           <div className="product-header">
-            <h2>{product.title}</h2>
+            <h2>{product?.title}</h2>
           </div>
           <div className="product-description">
-            <p>{product.description}</p>
+            <p>{product?.description}</p>
           </div>
           <div className="product-materials">
-            <p>{product.materials}</p>
+            <p>{product?.materials}</p>
           </div>
           <div className="product-actions">
             <button className="button button-primary">Contribute to this Story</button>
