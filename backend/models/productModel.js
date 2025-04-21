@@ -1,20 +1,35 @@
-const fs = require('fs');
-const filePath = './database/products.json';
+const mongoose = require('mongoose');
 
-// GET:
-const getProducts = () => {
-  const data = fs.readFileSync(filePath);
+const productSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    image: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    materials: {
+      type: Array,
+      required: true,
+      trim: true,
+    },
+    usage: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  { timestamps: true, collection: 'products' }
+);
 
-  return JSON.parse(data);
-};
-
-const getProductById = (id) => {
-    const products = getProducts();
-    return products.find((product) => product.id === id);
-  };
-
-module.exports = {
-  getProducts,
-  getProductById,
-};
+module.exports = mongoose.model('Product', productSchema);
 

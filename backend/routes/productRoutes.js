@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const { getProducts, getProductById } = require('../controllers/productController');
+const productsController = require('../controllers/productController');
 
-router.get('/', getProducts);
-router.get('/:id', getProductById);
+router.get('/', productsController.getProducts);
+router.get('/:id', productsController.getProductById);
+router.post('/', productsController.createProduct);
+
+// tbc:
+// router.patch('/:id', productsController.updateProduct);
+// router.delete('/:id', productsController.deleteProduct);
 
 module.exports = router;

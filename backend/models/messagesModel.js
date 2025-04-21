@@ -1,33 +1,24 @@
-const fs = require('fs');
-const filePath = './database/messages.json';
-const { v4: uuidv4 } = require('uuid');
+const mongoose = require('mongoose');
 
-// GET:
-const getMessages = () => {
-  const data = fs.readFileSync(filePath);
+const messageSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    message: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  { timestamps: true, collection: 'messages' }
+);
 
-  return JSON.parse(data);
-};
-
-// POST:
-// we receive an object, which was sent at Controller:
-const createMessage = (messageData) => {
-  const messages = getMessages();
-
-  // we create a new message with what a user sent us:
-  const newMessage = {
-    id: uuidv4(),
-    ...messageData,
-    date: new Date().toISOString(),
-  };
-
-  // we add this message to all messages in our DB:
-  messages.push(newMessage);
-  fs.writeFileSync(filePath, JSON.stringify(messages, null, 2));
-  return newMessage;
-};
-
-module.exports = {
-  getMessages,
-  createMessage,
-};
+module.exports = mongoose.model('Message', messageSchema);
