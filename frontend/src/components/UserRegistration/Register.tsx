@@ -85,7 +85,7 @@ export const Register = () => {
           </div>
 
           <button type="submit" className="register-button">
-            {'Registruotis'}
+            {'Register'}
           </button>
         </form>
 
