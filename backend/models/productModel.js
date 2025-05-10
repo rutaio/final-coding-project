@@ -22,11 +22,6 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    usage: {
-      type: String,
-      required: true,
-      trim: true,
-    },
   },
   { timestamps: true, collection: 'products' }
 );

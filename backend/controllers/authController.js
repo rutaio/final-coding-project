@@ -72,25 +72,9 @@ exports.login = async (req, res) => {
   }
 };
 
-// if a GET request is used on postman at /auth/user/id, it returns error 404
-// am I testing in a wrong way?
 exports.getCurrentUser = async (req, res) => {
   try {
-    const token = req.header('Authorization')?.replace('Bearer ', '');
-
-    if (!token) {
-      return res.status(401).json({ error: 'Unauthorized' });
-    }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    const user = await User.findById(decoded.userId).select('-password');
-
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-
-    res.json(user);
+    res.json(req.user);
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }

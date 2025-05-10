@@ -24,7 +24,7 @@ export const Navigation = () => {
           </li>
           <li>
             <Link to="/contact">Contact</Link>
-          </li>
+          </li> 
 
           {isAuthenticated ? (
             <>

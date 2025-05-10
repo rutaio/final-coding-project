@@ -12,7 +12,6 @@ import { AuthProvider } from './contexts/AuthContext';
 import { Profile } from './components/UserProfile/Profile';
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 
-
 function App() {
   return (
     <>

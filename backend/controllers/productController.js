@@ -36,3 +36,5 @@ exports.createProduct = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+// update and delete - by admin - tbc
