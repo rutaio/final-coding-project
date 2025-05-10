@@ -1,7 +1,8 @@
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 
-// postman returns a server error, but it creates a user in mongo..
+// in console, it works correctly, i.e. it redirects to login,
+// BUT it does not show token in localStorage..
 exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -23,19 +24,26 @@ exports.register = async (req, res) => {
 
     user.save();
 
-    const token = jwt.sign({ userId: user._id } , process.env.JWT_SECRET, {
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: '30d',
     });
 
-    res
-      .status(201)
-      .json({ access_token: token, message: 'User registered successfully' });
+    res.status(201).json({
+      access_token: token,
+      // added code here:
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+      message: 'User registered successfully',
+    });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }
 };
 
-// if a POST request is used on postman at login, it returns access token
+// in console, it does not work.. 401 error.
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -64,9 +72,16 @@ exports.login = async (req, res) => {
       }
     );
 
-    res
-      .status(201)
-      .json({ access_token: token, message: 'User logged in successfully' });
+    // added code here:
+    res.status(201).json({
+      access_token: token,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+      message: 'User logged in successfully',
+    });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }

@@ -43,7 +43,7 @@ export const Login = () => {
           </div>
 
           <button type="submit" className="register-button">
-            {'Register'}
+            {'Login'}
           </button>
         </form>
 

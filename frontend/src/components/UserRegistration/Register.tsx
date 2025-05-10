@@ -73,7 +73,7 @@ export const Register = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="name">Repeat Your Password</label>
+            <label htmlFor="confirm-password">Repeat Your Password</label>
             <input
               type="password"
               id="confirm-password"

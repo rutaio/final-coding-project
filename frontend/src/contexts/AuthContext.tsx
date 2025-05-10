@@ -85,10 +85,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
 
       localStorage.setItem('access_token', response.data.access_token);
+      // debugging:
+      console.log('Token stored:', localStorage.getItem('access_token'));
+
       setToken(response.data.access_token);
       setUser(response.data.user);
       setIsAuthenticated(true);
-      navigate('/dashboard');
+      navigate('/profile');
     } catch (error) {
       const errorMessage =
         axios.isAxiosError(error) && error.response?.data?.error
@@ -112,10 +115,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
 
       localStorage.setItem('access_token', response.data.access_token);
+      // debugging:
+      console.log('Token stored:', localStorage.getItem('access_token'));
+
       setToken(response.data.access_token);
       setUser(response.data.user);
       setIsAuthenticated(true);
-      navigate('/dashboard');
+      navigate('/profile');
     } catch (error) {
       const errorMessage =
         axios.isAxiosError(error) && error.response?.data?.error

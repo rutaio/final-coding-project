@@ -3,7 +3,7 @@ import './profile.css';
 import { AuthContext } from '../../contexts/AuthContext';
 
 // how to showcase submitted products here? thru props?
-export const Profile = ({productContent}) => {
+export const Profile = () => {
   const { user } = useContext(AuthContext);
 
   return (
@@ -23,20 +23,20 @@ export const Profile = ({productContent}) => {
             <p>
               <strong>Email:</strong> {user?.email}
             </p>
-            <p>
-              <strong>Type of contributor:</strong> {user?.role}
-            </p>
           </div>
-
-          <div className="contributions-container">
-            <h3>Your Contributions</h3>
-            <div className="submitted-products-info">
-              <p>
-                <strong>Product Title:</strong> {product?.title}
-              </p>
-              <button>Edit</button>
-              <button>Delete</button>
-            </div>
+        </div>
+        <div className="contributions-container">
+          <h3>Your Contributions</h3>
+          <div className="submitted-products-info">
+            <img src=""></img>
+            <h2>
+              <strong>Title:</strong>
+            </h2>
+            <p>
+              <strong>Description:</strong>
+            </p>
+            <h6>Materials:</h6>
+            <button>Edit</button>
           </div>
         </div>
       </div>

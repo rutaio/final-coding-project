@@ -21,15 +21,17 @@ function App() {
             <Navigation />
             <main className="main-content">
               <Routes>
-              <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<HomePage />} />
                 <Route path="/collection" element={<ProductList />} />
                 <Route path="/products/:id" element={<ProductDetails />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactsPage />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route element={<ProtectedRoute />}></Route>
+
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/profile" element={<Profile />} />
+                </Route>
               </Routes>
             </main>
           </div>
