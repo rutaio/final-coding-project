@@ -26,7 +26,7 @@ exports.getProductById = async (req, res) => {
   }
 };
 
-// works on postman
+// does not work on postman
 exports.createProduct = async (req, res) => {
   try {
     const newProduct = new Product(req.body);

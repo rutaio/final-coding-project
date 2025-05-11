@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../constants/global';
-import { Product } from '../../types/ProductTypes';
+import { Product } from '../../types/types';
 
 export const ProductDetails = () => {
   const navigate = useNavigate();

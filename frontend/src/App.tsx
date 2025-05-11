@@ -6,10 +6,10 @@ import { ProductList } from './components/ProductList/ProductList';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
 import { AboutPage } from './pages/AboutPage/AboutPage';
 import { ContactsPage } from './pages/ContactPage/ContactPage';
-import { Register } from './components/UserRegistration/Register';
-import { Login } from './components/UserLogin/Login';
+import { Register } from './components/Registration/Register';
+import { Login } from './components/Login/Login';
 import { AuthProvider } from './contexts/AuthContext';
-import { Profile } from './components/UserProfile/Profile';
+import { Profile } from './components/Profile/Profile';
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 
 function App() {

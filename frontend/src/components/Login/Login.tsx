@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import '../UserRegistration/register.css';
+import '../Registration/register.css';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export const Login = () => {
