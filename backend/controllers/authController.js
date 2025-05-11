@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 
 // in console, it works correctly, i.e. it redirects to login,
 // BUT it does not show token in localStorage..
+
+// in postman POST and GET request work correctly, it shows access token and returns the user
 exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -22,7 +24,8 @@ exports.register = async (req, res) => {
       password,
     });
 
-    user.save();
+    // added code here:
+    await user.save();
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: '30d',
@@ -43,7 +46,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// in console, it does not work.. 401 error.
+// in console, it does not work.. error with ProtectedRoute..
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -72,13 +75,13 @@ exports.login = async (req, res) => {
       }
     );
 
-    // added code here:
     res.status(201).json({
       access_token: token,
+      // added code here:
       user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
+        _id: existingUser._id,
+        name: existingUser.name,
+        email: existingUser.email,
       },
       message: 'User logged in successfully',
     });
@@ -89,7 +92,10 @@ exports.login = async (req, res) => {
 
 exports.getCurrentUser = async (req, res) => {
   try {
-    res.json(req.user);
+    if (!req.user) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+    res.json(req.user); // user is attached by authMiddleware
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }

@@ -5,6 +5,8 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
+
+// does not work on postman..
 router.get('/user', authMiddleware, authController.getCurrentUser);
 
 module.exports = router;

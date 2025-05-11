@@ -21,11 +21,11 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['contributor', 'admin'],
-      default: 'contributor',
+      enum: ['user', 'admin'],
+      default: 'user',
     },
   },
-  { timestamps: true, collection: 'users' }
+  { timestamps: true }
 );
 
 userSchema.pre('save', async function (next) {
