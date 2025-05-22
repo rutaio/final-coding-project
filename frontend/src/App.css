@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.gstatic.com" crossorigin');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Darumadrop+One&family=Quicksand:wght@300..700&display=swap" rel="stylesheet');
+
 * {
   margin: 0;
   padding: 0;
@@ -20,4 +24,36 @@ body {
 .main-content {
   flex: 1;
   width: 100%;
+}
+
+.navigation-logo {
+  font-family: 'Cabin Sketch', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Cabin Sketch', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+button {
+  font-family: 'Darumadrop One', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p,
+input,
+label,
+nav a {
+  font-family: 'Quicksand', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }

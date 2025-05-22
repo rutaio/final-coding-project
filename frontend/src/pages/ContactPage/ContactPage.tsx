@@ -10,9 +10,9 @@ export const ContactsPage = () => {
 
   return (
     <section className="contact">
-      <h2>Contact about Collaborations?</h2>
+      <h1>Contact about Collaborations?</h1>
       <div className="contact-form-container">
-        <h3>Start a Conversation</h3>
+        <h2>Start a Conversation</h2>
         <ContactForm onSubmit={handleContactForm} />
       </div>
       <div className="contact-info-container">

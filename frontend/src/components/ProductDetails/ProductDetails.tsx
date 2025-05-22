@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../constants/global';
 import { Product } from '../../types/types';
+import '../Buttons/buttons.css';
 
 export const ProductDetails = () => {
   const navigate = useNavigate();

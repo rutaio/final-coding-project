@@ -4,8 +4,8 @@ import { AuthContext } from '../../contexts/AuthContext';
 import axios from 'axios';
 import { API_URL } from '../../constants/global';
 import { Product } from '../../types/types';
-import { SubmittedProducts } from './SubmittedProducts';
-import { AccountInfo } from './AccountInfo';
+import { SubmittedProducts } from './components/SubmittedProducts';
+import { AccountInfo } from './components/AccountInfo';
 
 export const Profile = () => {
   const { user, access_token } = useContext(AuthContext);

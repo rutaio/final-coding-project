@@ -11,6 +11,7 @@ import { Login } from './components/Login/Login';
 import { AuthProvider } from './contexts/AuthContext';
 import { Profile } from './components/Profile/Profile';
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                 </Route>
               </Routes>
             </main>
+            <Footer />
           </div>
         </AuthProvider>
       </Router>
