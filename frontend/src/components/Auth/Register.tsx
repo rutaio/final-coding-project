@@ -1,7 +1,8 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import './Register.css';
+import './auth.css';
 import { AuthContext } from '../../contexts/AuthContext';
+import { Button } from '../Buttons/Button';
 
 export const Register = () => {
   const [name, setName] = useState('');
@@ -37,11 +38,11 @@ export const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <div className="register-form-wrapper">
+    <div className="container">
+      <div className="form-wrapper">
         <h2>Become a Contributor</h2>
 
-        <form onSubmit={handleSubmit} className="register-form">
+        <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
             <label htmlFor="name">Your Full Name</label>
             <input
@@ -81,12 +82,12 @@ export const Register = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-            {passwordError && <p className="field-error">{passwordError}</p>}
+            {passwordError && <p className="error-message">{passwordError}</p>}
           </div>
 
-          <button type="submit" className="register-button">
-            {'Register'}
-          </button>
+          <Button buttonType="primary" type="submit">
+            Register
+          </Button>
         </form>
 
         <div className="login-link">

@@ -4,13 +4,12 @@ import { Navigation } from './components/Navigation/Navigation';
 import { HomePage } from './pages/HomePage/HomePage';
 import { ProductList } from './components/ProductList/ProductList';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
-import { AboutPage } from './pages/AboutPage/AboutPage';
 import { ContactsPage } from './pages/ContactPage/ContactPage';
-import { Register } from './components/Registration/Register';
-import { Login } from './components/Login/Login';
+import { Register } from './components/Auth/Register';
+import { Login } from './components/Auth/Login';
 import { AuthProvider } from './contexts/AuthContext';
 import { Profile } from './components/Profile/Profile';
-import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
+import { ProtectedRoute } from './components/Auth/ProtectedRoute';
 import { Footer } from './components/Footer/Footer';
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/collection" element={<ProductList />} />
                 <Route path="/products/:id" element={<ProductDetails />} />
-                <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactsPage />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />

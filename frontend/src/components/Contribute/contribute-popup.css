@@ -65,35 +65,6 @@
   margin-top: 2rem;
 }
 
-.popup-actions button {
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.popup-actions button[type='button'] {
-  background: #f8f9fa;
-  border: 1px solid #ddd;
-  color: #333;
-}
-
-.popup-actions button[type='submit'] {
-  background: #007bff;
-  border: none;
-  color: white;
-}
-
-.popup-actions button:hover {
-  opacity: 0.9;
-}
-
-.popup-actions button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
 .error-container {
   color: red;
 }

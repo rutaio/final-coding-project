@@ -57,3 +57,13 @@ nav a {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+a {
+  color: #e30fd5;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0cc2c5;
+  text-decoration: underline;
+}

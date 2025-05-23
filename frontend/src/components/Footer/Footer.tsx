@@ -2,6 +2,7 @@ import './footer.css';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import { Button } from '../Buttons/Button';
 
 export const Footer = () => {
   const { isAuthenticated, user, logout } = useContext(AuthContext);
@@ -26,7 +27,7 @@ export const Footer = () => {
               <Link to="/collection">Collection</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </div>
@@ -38,9 +39,9 @@ export const Footer = () => {
                   <Link to="/profile">Profile</Link>
                 </li>
                 <li>
-                  <button onClick={logout} className="logout-button">
+                  <Button onClick={logout} type="button" buttonType="secondary">
                     Logout
-                  </button>
+                  </Button>
                 </li>
                 {user?.role === 'admin' && (
                   <li className="admin-item">

@@ -2,6 +2,7 @@ import './navigation.css';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import { Button } from '../Buttons/Button';
 
 export const Navigation = () => {
   const { isAuthenticated, user, logout } = useContext(AuthContext);
@@ -19,12 +20,6 @@ export const Navigation = () => {
           <li>
             <Link to="/collection">Collection</Link>
           </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li> 
 
           {isAuthenticated ? (
             <>
@@ -32,9 +27,9 @@ export const Navigation = () => {
                 <Link to="/profile">Profile</Link>
               </li>
               <li>
-                <button onClick={logout} className="logout-button">
+                <Button onClick={logout} type="button" buttonType="secondary">
                   Logout
-                </button>
+                </Button>
               </li>
               {user?.role === 'admin' && (
                 <li className="admin-item">

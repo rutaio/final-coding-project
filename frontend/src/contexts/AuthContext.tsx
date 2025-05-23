@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           setToken(null);
           setUser(null);
           setIsAuthenticated(false);
-          setError('Authentication failed. Please log in again.');
+          setError('Oops, authentication failed. Log in again?');
         }
       }
       setIsLoading(false);
@@ -96,7 +96,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const errorMessage =
         axios.isAxiosError(error) && error.response?.data?.error
           ? error.response.data.error
-          : 'Registration failed. Please try again.';
+          : 'Oops, your email or password is not right. Try again?';
       setError(errorMessage);
     } finally {
       setIsLoading(false);
@@ -123,11 +123,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setIsAuthenticated(true);
       navigate('/profile');
     } catch (error) {
-      const errorMessage =
-        axios.isAxiosError(error) && error.response?.data?.error
-          ? error.response.data.error
-          : 'Login failed. Please check your credentials.';
-      setError(errorMessage);
+      console.error('Login error:', error);
+      setError('Oops, your email or password is not right. Try again?');
     } finally {
       setIsLoading(false);
     }

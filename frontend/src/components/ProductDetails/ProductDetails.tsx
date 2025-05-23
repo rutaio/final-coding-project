@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../constants/global';
 import { Product } from '../../types/types';
-import '../Buttons/buttons.css';
+import { Button } from '../Buttons/Button';
 
 export const ProductDetails = () => {
   const navigate = useNavigate();
@@ -53,13 +53,16 @@ export const ProductDetails = () => {
             <p>{product?.materials}</p>
           </div>
           <div className="product-actions">
-            <button className="button button-primary">Contribute to this Story</button>
-            <button
-              className="button button-secondary"
+            <Button buttonType="primary" type="button">
+              Contribute to this Story
+            </Button>
+            <Button
+              buttonType="secondary"
+              type="button"
               onClick={handleBackClick}
             >
               Go back
-            </button>
+            </Button>
           </div>
         </div>
       </div>

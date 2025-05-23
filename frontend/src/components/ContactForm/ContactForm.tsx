@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../constants/global';
+import { Button } from '../Buttons/Button';
 
 interface ContactFormProps {
   onSubmit: () => void;
@@ -57,7 +58,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
         onChange={(event) => setMessage(event.target.value)}
       ></textarea>
 
-      <button type="submit">Send</button>
+      <Button buttonType="primary" type="submit">
+        Send
+      </Button>
     </form>
   );
 };

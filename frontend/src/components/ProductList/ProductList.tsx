@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../constants/global';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { Product } from '../../types/ProductTypes';
-import { ContributePopup } from '../ProductActionsUnused/Contribute/ContributePopup';
-import '../Buttons/buttons.css';
+import { Product } from '../../types/types';
+import { ContributePopup } from '../Contribute/ContributePopup';
+import { Button } from '../Buttons/Button';
 
 export const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -34,12 +34,9 @@ export const ProductList = () => {
           curious people. This collection highlights the Products that Shaped
           Human Behaviour.
         </p>
-        <button
-          className="button-primary"
-          onClick={() => setIsPopupVisible(true)}
-        >
+        <Button buttonType="primary" onClick={() => setIsPopupVisible(true)}>
           Contribute
-        </button>
+        </Button>
       </div>
       <div className="container">
         <div className="product-list">

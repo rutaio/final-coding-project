@@ -1,13 +1,14 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import '../Registration/register.css';
+import './auth.css';
 import { AuthContext } from '../../contexts/AuthContext';
+import { Button } from '../Buttons/Button';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { login } = useContext(AuthContext);
+  const { login, error } = useContext(AuthContext);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,11 +17,11 @@ export const Login = () => {
   };
 
   return (
-    <div className="register-container">
-      <div className="register-form-wrapper">
+    <div className="container">
+      <div className="form-wrapper">
         <h2>Come Back to Your Profile</h2>
 
-        <form onSubmit={handleSubmit} className="register-form">
+        <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
             <label htmlFor="email">Your Email</label>
             <input
@@ -42,13 +43,16 @@ export const Login = () => {
             />
           </div>
 
-          <button type="submit" className="register-button">
-            {'Login'}
-          </button>
+          {error && <div className="error-message">{error}</div>}
+
+          <Button buttonType="primary" type="submit">
+            Login
+          </Button>
         </form>
 
         <div className="login-link">
-          Don't have an account yet? <Link to="/register">Become Contributor</Link>
+          Don't have an account yet?{' '}
+          <Link to="/register">Become Contributor</Link>
         </div>
       </div>
     </div>

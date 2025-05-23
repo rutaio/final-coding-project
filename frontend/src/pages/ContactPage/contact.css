@@ -8,11 +8,9 @@
 .contact h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #2575fc;
 }
 
 .contact h3 {
-  color: #6a11cb;
   font-size: 1.75rem;
 }
 
@@ -52,16 +50,6 @@
   background-color: #fff;
   width: 100%;
   margin-top: 15px;
-}
-
-.contact button {
-  background-color: #2575fc;
-  color: white;
-  width: 100%;
-  border: none;
-  border-radius: 8px;
-  padding: 10px;
-  font-size: 1.2rem;
 }
 
 .contact-info-container {

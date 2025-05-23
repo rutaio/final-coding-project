@@ -1,7 +1,9 @@
 import './contribute-popup.css';
 import axios from 'axios';
-import { useState } from 'react';
-import { API_URL } from '../../../constants/global';
+import { useState, useContext } from 'react';
+import { API_URL } from '../../constants/global';
+import { Button } from '../Buttons/Button';
+import { AuthContext } from '../../contexts/AuthContext';
 
 interface ContributePopupProps {
   onPopupClose: () => void;
@@ -17,25 +19,32 @@ export const ContributePopup: React.FC<ContributePopupProps> = ({
   const [image, setImage] = useState<string>('');
   const [materials, setMaterials] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
+  const { access_token } = useContext(AuthContext);
 
   const handleFormSubmit = async (event: React.FormEvent) => {
     event?.preventDefault();
     try {
-      await axios.post(`${API_URL}/products`, {
-        title,
-        description,
-        image,
-        materials,
-      });
-      // if request is successful, call a function from a parent CollectionPage:
+      const config = {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      };
+
+      await axios.post(
+        `${API_URL}/products`,
+        {
+          title,
+          description,
+          image,
+          materials,
+        },
+        config
+      );
       onPopupClose();
-      // when form is sent, call an additional props:
       onSuccess();
       setError(null);
     } catch (error) {
-      // add an error that came back:
       if (axios.isAxiosError(error)) {
-        // I'm going deeper through the objects:
         const errorMessage = error.response?.data?.error || 'Error happened';
         setError(errorMessage);
       }
@@ -59,7 +68,9 @@ export const ContributePopup: React.FC<ContributePopupProps> = ({
             </div>
 
             <div className="form-group">
-              <label htmlFor="description">Describe how this object was used:</label>
+              <label htmlFor="description">
+                Describe how this object was used:
+              </label>
               <textarea
                 id="description"
                 rows={3}
@@ -91,10 +102,17 @@ export const ContributePopup: React.FC<ContributePopupProps> = ({
             {error && <div className="error-container">{error}</div>}
 
             <div className="popup-actions">
-              <button type="button" onClick={onPopupClose}>
+              <Button
+                onClick={onPopupClose}
+                buttonType="secondary"
+                type="button"
+              >
                 Cancel
-              </button>
-              <button type="submit">Contribute</button>
+              </Button>
+
+              <Button buttonType="primary" type="submit">
+                Contribute
+              </Button>
             </div>
           </form>
         </div>
