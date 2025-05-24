@@ -18,7 +18,7 @@ export const SubmittedProducts = ({
       ) : (
         <div>
           <h3>Your Contributions</h3>
-          <table className="products-table">
+          <table className="table">
             <thead>
               <tr>
                 <th>Image</th>

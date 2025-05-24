@@ -13,7 +13,7 @@ export const ProductList = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`${API_URL}/products`);
+      const response = await axios.get(`${API_URL}/products/public`);
       setProducts(response.data);
     } catch (error) {
       console.log(error);
@@ -27,12 +27,11 @@ export const ProductList = () => {
   return (
     <>
       <div className="hero">
-        <h1>Museum of Rest</h1>
+        <h1>How do humans rest?</h1>
         <p>
-          Discover a collection of things used by humans who have lived in 21st
-          century. This collection is curated together with our community of
-          curious people. This collection highlights the Products that Shaped
-          Human Behaviour.
+          Discover things that have shaped human behaviour and encouraged rest
+          in 21st century. This collection is curated together with our
+          community of curious people.
         </p>
         <Button buttonType="primary" onClick={() => setIsPopupVisible(true)}>
           Contribute

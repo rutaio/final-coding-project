@@ -6,28 +6,38 @@ import { API_URL } from '../../constants/global';
 import { Product } from '../../types/types';
 import { SubmittedProducts } from './components/SubmittedProducts';
 import { AccountInfo } from './components/AccountInfo';
+import { AllUsers } from './components/AllUsers';
+import { UserProductList } from './components/UserProductList';
+
+type Tab = 'user' | 'admin-all-products' | 'admin-all-users';
 
 export const Profile = () => {
   const { user, access_token } = useContext(AuthContext);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<Tab>('user');
+  const isAdmin = user?.role === 'admin';
 
   const fetchProducts = async () => {
+    setLoading(true);
     try {
-      setLoading(true);
       const config = {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
       };
-
-      const response = await axios.get<Product[]>(
-        `${API_URL}/products`,
-        config
-      );
+      let response;
+      if (isAdmin) {
+        response = await axios.get<Product[]>(
+          `${API_URL}/products/admin`,
+          config
+        );
+      } else {
+        response = await axios.get<Product[]>(`${API_URL}/products/my`, config);
+      }
       setProducts(response.data);
     } catch (error) {
-      console.error('Error fetching user submitted products:', error);
+      console.error('Error fetching products:', error);
     } finally {
       setLoading(false);
     }
@@ -46,12 +56,45 @@ export const Profile = () => {
         <p>Welcome back, {user?.name}!</p>
       </div>
 
-      <div className="submitted-products">
-        <SubmittedProducts products={products} loading={loading} />
-      </div>
+      {isAdmin && (
+        <div className="tabs">
+          <button
+            className={`tab-button ${activeTab === 'user' ? 'active' : ''}`}
+            onClick={() => setActiveTab('user')}
+          >
+            Your Submitted Products
+          </button>
+          <button
+            className={`tab-button ${
+              activeTab === 'admin-all-products' ? 'active' : ''
+            }`}
+            onClick={() => setActiveTab('admin-all-products')}
+          >
+            Manage Submitted Products
+          </button>
+          <button
+            className={`tab-button ${
+              activeTab === 'admin-all-users' ? 'active' : ''
+            }`}
+            onClick={() => setActiveTab('admin-all-users')}
+          >
+            Manage Users
+          </button>
+        </div>
+      )}
 
-      <div>
-        <AccountInfo user={user} />
+      <div className="profile-content">
+        {activeTab === 'user' && (
+          <>
+            <AccountInfo user={user} />
+            <UserProductList products={products} loading={loading} />
+          </>
+        )}
+
+        {activeTab === 'admin-all-products' && (
+          <SubmittedProducts products={products} loading={loading} />
+        )}
+        {activeTab === 'admin-all-users' && <AllUsers />}
       </div>
     </div>
   );

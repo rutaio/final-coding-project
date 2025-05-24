@@ -1,5 +1,5 @@
 .navigation {
-  background-color: #ffffff;
+  background-color: rgb(206, 245, 249);
   padding: 1rem 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: sticky;
@@ -28,7 +28,7 @@
 .navigation-logo span {
   font-size: 2rem;
   font-weight: 700;
-  color: #63edaafe;
+  color: #449f73fe;
 }
 
 .navigation ul {

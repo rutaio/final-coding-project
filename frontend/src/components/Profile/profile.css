@@ -22,7 +22,7 @@
   margin-bottom: 20px;
 }
 
-.products-table {
+.table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
@@ -33,7 +33,7 @@
   text-align: left;
 }
 
-.products-table .product-image {
+.table .product-image {
   width: 50px;
 }
 
