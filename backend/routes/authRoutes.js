@@ -9,4 +9,6 @@ router.post('/login', authController.login);
 // does not work on postman..
 router.get('/user', authMiddleware, authController.getCurrentUser);
 
+router.get('/all-users', authMiddleware, authController.getAllUsers);
+
 module.exports = router;

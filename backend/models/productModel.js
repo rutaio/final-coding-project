@@ -23,10 +23,10 @@ const productSchema = new mongoose.Schema(
       trim: true,
     },
 
+    // I want to keep this for the future features when I integrate adding data through APIs:
     source: {
       type: String,
       enum: ['user', 'api'],
-      required: true,
     },
 
     userId: {

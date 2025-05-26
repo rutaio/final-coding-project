@@ -1,10 +1,6 @@
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 
-// in console, it works correctly, i.e. it redirects to login,
-// BUT it does not show token in localStorage..
-
-// in postman POST and GET request work correctly, it shows access token and returns the user
 exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -46,7 +42,6 @@ exports.register = async (req, res) => {
   }
 };
 
-// in console, it does not work.. error with ProtectedRoute..
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -98,5 +93,17 @@ exports.getCurrentUser = async (req, res) => {
     res.json(req.user); // user is attached by authMiddleware
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
+  }
+};
+
+exports.getAllUsers = async (req, res) => {
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({ error: 'Access denied' });
+  }
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch all users in the server' });
   }
 };

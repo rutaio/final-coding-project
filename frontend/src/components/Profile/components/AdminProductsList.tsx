@@ -5,7 +5,7 @@ import { ApproveProductPopup } from './ApproveProductPopup';
 interface AdminProductsListProps {
   products: Product[];
   loading: boolean;
-  fetchProducts: () => void;
+  fetchAdminProducts: () => void;
 }
 
 // This component is for Admin
@@ -13,7 +13,7 @@ interface AdminProductsListProps {
 export const AdminProductsList = ({
   products,
   loading,
-  fetchProducts,
+  fetchAdminProducts,
 }: AdminProductsListProps) => {
   const [popupProduct, setPopupProduct] = useState<Product | null>(null);
 
@@ -61,7 +61,7 @@ export const AdminProductsList = ({
           onPopupClose={() => setPopupProduct(null)}
           onSuccess={() => {
             setPopupProduct(null);
-            fetchProducts();
+            fetchAdminProducts();
           }}
         />
       )}

@@ -10,8 +10,9 @@ export const AccountInfo = ({ user }: AccountInfoProps) => {
       <h3>Account Information</h3>
       <div>
         <p>
-          <strong>Name:</strong> {user?.name}
+          <strong>Name:</strong> {user?.name || 'N/A'}
         </p>
+
         <p>
           <strong>Email:</strong> {user?.email}
         </p>

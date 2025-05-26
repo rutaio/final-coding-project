@@ -3,7 +3,7 @@ import './profile.css';
 import { AuthContext } from '../../contexts/AuthContext';
 import axios from 'axios';
 import { API_URL } from '../../constants/global';
-import { Product } from '../../types/types';
+import { Product, User } from '../../types/types';
 import { AdminProductsList } from './components/AdminProductsList';
 import { AccountInfo } from './components/AccountInfo';
 import { AllUsers } from './components/AllUsers';
@@ -11,45 +11,74 @@ import { UserProductsList } from './components/UserProductsList';
 
 type Tab = 'user' | 'admin-all-products' | 'admin-all-users';
 
-// The parent Profile fetches products and passes them to AdminProductsList
-
 export const Profile = () => {
   const { user, access_token } = useContext(AuthContext);
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState<User[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const [loadingUsers, setLoadingUsers] = useState(true);
   const [activeTab, setActiveTab] = useState<Tab>('user');
   const isAdmin = user?.role === 'admin';
 
-  const fetchProducts = async () => {
-    setLoading(true);
+  useEffect(() => {
+    if (!access_token) return;
+
+    if (activeTab === 'user') {
+      fetchUserProducts();
+    } else if (activeTab === 'admin-all-products') {
+      fetchAdminProducts();
+    } else if (activeTab === 'admin-all-users') {
+      fetchUsers();
+    }
+  }, [access_token, activeTab]);
+
+  const fetchUserProducts = async () => {
+    setLoadingProducts(true);
     try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      };
-      let response;
-      if (isAdmin) {
-        response = await axios.get<Product[]>(
-          `${API_URL}/products/admin`,
-          config
-        );
-      } else {
-        response = await axios.get<Product[]>(`${API_URL}/products/my`, config);
-      }
+      const config = { headers: { Authorization: `Bearer ${access_token}` } };
+      const response = await axios.get<Product[]>(
+        `${API_URL}/products/my`,
+        config
+      );
       setProducts(response.data);
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error(error);
     } finally {
-      setLoading(false);
+      setLoadingProducts(false);
     }
   };
 
-  useEffect(() => {
-    if (access_token) {
-      fetchProducts();
+  const fetchAdminProducts = async () => {
+    setLoadingProducts(true);
+    try {
+      const config = { headers: { Authorization: `Bearer ${access_token}` } };
+      const response = await axios.get<Product[]>(
+        `${API_URL}/products/admin`,
+        config
+      );
+      setProducts(response.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoadingProducts(false);
     }
-  }, [access_token]);
+  };
+
+  const fetchUsers = async () => {
+    setLoadingUsers(true);
+    try {
+      const config = { headers: { Authorization: `Bearer ${access_token}` } };
+      const response = await axios.get<User[]>(
+        `${API_URL}/auth/all-users`,
+        config
+      );
+      setUsers(response.data);
+    } catch (error) {
+      console.error('Error fetching all users:', error);
+    } finally {
+      setLoadingUsers(false);
+    }
+  };
 
   return (
     <div className="profile-container">
@@ -64,7 +93,7 @@ export const Profile = () => {
             className={`tab-button ${activeTab === 'user' ? 'active' : ''}`}
             onClick={() => setActiveTab('user')}
           >
-            Your Submitted Products
+            Your Submissions
           </button>
           <button
             className={`tab-button ${
@@ -72,7 +101,7 @@ export const Profile = () => {
             }`}
             onClick={() => setActiveTab('admin-all-products')}
           >
-            Manage Submitted Products
+            Manage User Products
           </button>
           <button
             className={`tab-button ${
@@ -88,19 +117,30 @@ export const Profile = () => {
       <div className="profile-content">
         {activeTab === 'user' && (
           <>
-            <AccountInfo user={user} />
-            <UserProductsList products={products} loading={loading} />
+            {user ? (
+              <AccountInfo user={user} />
+            ) : (
+              <p>Loading account info...</p>
+            )}
+            <UserProductsList products={products} loading={loadingProducts} />
           </>
         )}
 
         {activeTab === 'admin-all-products' && (
           <AdminProductsList
             products={products}
-            loading={loading}
-            fetchProducts={fetchProducts}
+            loading={loadingProducts}
+            fetchAdminProducts={fetchAdminProducts}
           />
         )}
-        {activeTab === 'admin-all-users' && <AllUsers />}
+
+        {activeTab === 'admin-all-users' && (
+          <AllUsers
+            users={users}
+            loading={loadingUsers}
+            fetchUsers={fetchUsers}
+          />
+        )}
       </div>
     </div>
   );

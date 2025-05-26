@@ -31,11 +31,6 @@ export const Navigation = () => {
                   Logout
                 </Button>
               </li>
-              {user?.role === 'admin' && (
-                <li className="admin-item">
-                  <Link to="/admin">Admin</Link>
-                </li>
-              )}
             </>
           ) : (
             <>

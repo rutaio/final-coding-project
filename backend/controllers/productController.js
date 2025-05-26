@@ -69,7 +69,11 @@ exports.createProduct = async (req, res) => {
       .status(201)
       .json({ message: 'Product created successfully', product: newProduct });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create a product in the server' });
+    res
+      .status(500)
+      .json({
+        error: error.message || 'Failed to create a product in the server',
+      });
   }
 };
 

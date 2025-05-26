@@ -85,8 +85,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
 
       localStorage.setItem('access_token', response.data.access_token);
-      // debugging:
-      console.log('Token stored:', localStorage.getItem('access_token'));
 
       setToken(response.data.access_token);
       setUser(response.data.user);
@@ -115,12 +113,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       });
 
       localStorage.setItem('access_token', response.data.access_token);
-      // debugging:
-      console.log('Token stored:', localStorage.getItem('access_token'));
 
       setToken(response.data.access_token);
       setUser(response.data.user);
       setIsAuthenticated(true);
+
       navigate('/profile');
     } catch (error) {
       console.error('Login error:', error);
