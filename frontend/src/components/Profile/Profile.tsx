@@ -4,12 +4,14 @@ import { AuthContext } from '../../contexts/AuthContext';
 import axios from 'axios';
 import { API_URL } from '../../constants/global';
 import { Product } from '../../types/types';
-import { SubmittedProducts } from './components/SubmittedProducts';
+import { AdminProductsList } from './components/AdminProductsList';
 import { AccountInfo } from './components/AccountInfo';
 import { AllUsers } from './components/AllUsers';
-import { UserProductList } from './components/UserProductList';
+import { UserProductsList } from './components/UserProductsList';
 
 type Tab = 'user' | 'admin-all-products' | 'admin-all-users';
+
+// The parent Profile fetches products and passes them to AdminProductsList
 
 export const Profile = () => {
   const { user, access_token } = useContext(AuthContext);
@@ -87,12 +89,16 @@ export const Profile = () => {
         {activeTab === 'user' && (
           <>
             <AccountInfo user={user} />
-            <UserProductList products={products} loading={loading} />
+            <UserProductsList products={products} loading={loading} />
           </>
         )}
 
         {activeTab === 'admin-all-products' && (
-          <SubmittedProducts products={products} loading={loading} />
+          <AdminProductsList
+            products={products}
+            loading={loading}
+            fetchProducts={fetchProducts}
+          />
         )}
         {activeTab === 'admin-all-users' && <AllUsers />}
       </div>

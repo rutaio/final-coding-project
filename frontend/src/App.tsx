@@ -9,7 +9,7 @@ import { Register } from './components/Auth/Register';
 import { Login } from './components/Auth/Login';
 import { AuthProvider } from './contexts/AuthContext';
 import { Profile } from './components/Profile/Profile';
-import { ProtectedRoute } from './components/Auth/ProtectedRoute';
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 import { Footer } from './components/Footer/Footer';
 
 function App() {

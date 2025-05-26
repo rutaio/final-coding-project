@@ -17,7 +17,11 @@ const authMiddleware = async (req, res, next) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    req.user = user;
+    req.user = {
+      id: user._id,
+      role: user.role,
+    };
+
     next();
   } catch (error) {
     if (error.name === 'JsonWebTokenError') {

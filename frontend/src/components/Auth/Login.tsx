@@ -17,7 +17,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="auth-container">
       <div className="form-wrapper">
         <h2>Come Back to Your Profile</h2>
 

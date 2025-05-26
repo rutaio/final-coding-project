@@ -16,6 +16,9 @@ router.get('/admin', authMiddleware, productsController.getAllProducts);
 router.get('/:id', productsController.getProductById);
 router.post('/', authMiddleware, productsController.createProduct);
 
+// Admin approves all submitted products before they show up to the public:
+router.patch('/:id/approve', authMiddleware, productsController.approveProduct);
+
 // tbc:
 // router.patch('/:id', productsController.updateProduct);
 // router.delete('/:id', productsController.deleteProduct);

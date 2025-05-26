@@ -38,7 +38,7 @@ export const Register = () => {
   };
 
   return (
-    <div className="container">
+    <div className="auth-container">
       <div className="form-wrapper">
         <h2>Become a Contributor</h2>
 

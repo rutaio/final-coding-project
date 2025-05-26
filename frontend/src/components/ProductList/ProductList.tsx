@@ -4,7 +4,7 @@ import axios from 'axios';
 import { API_URL } from '../../constants/global';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/types';
-import { ContributePopup } from '../Contribute/ContributePopup';
+import { ContributePopup } from '../ContributePopup/ContributePopup';
 import { Button } from '../Buttons/Button';
 
 export const ProductList = () => {
@@ -39,9 +39,13 @@ export const ProductList = () => {
       </div>
       <div className="container">
         <div className="product-list">
-          {products.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
+          {products.length === 0 ? (
+            <p>No products found. Check back soon!</p>
+          ) : (
+            products.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))
+          )}
         </div>
       </div>
       {isPopupVisible && (
