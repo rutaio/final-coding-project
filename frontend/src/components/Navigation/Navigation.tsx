@@ -24,7 +24,11 @@ export const Navigation = () => {
           {isAuthenticated ? (
             <>
               <li>
-                <Link to="/profile">Profile</Link>
+                {user?.role === 'admin' ? (
+                  <Link to="/admin">Admin Dashboard</Link>
+                ) : (
+                  <Link to="/profile">Profile</Link>
+                )}
               </li>
               <li>
                 <Button onClick={logout} type="button" buttonType="secondary">

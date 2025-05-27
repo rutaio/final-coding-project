@@ -8,9 +8,10 @@ import { ContactsPage } from './pages/ContactPage/ContactPage';
 import { Register } from './components/Auth/Register';
 import { Login } from './components/Auth/Login';
 import { AuthProvider } from './contexts/AuthContext';
-import { Profile } from './components/Profile/Profile';
+import { UserProfile } from './components/UserProfile/UserProfile';
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 import { Footer } from './components/Footer/Footer';
+import { AdminDashboard } from './components/AdminDashboard/AdminDashboard';
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
                 <Route path="/login" element={<Login />} />
 
                 <Route element={<ProtectedRoute />}>
-                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/profile" element={<UserProfile />} />
+                  <Route path="/admin" element={<AdminDashboard />} />
                 </Route>
               </Routes>
             </main>
