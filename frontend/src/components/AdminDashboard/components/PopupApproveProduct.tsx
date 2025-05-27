@@ -1,4 +1,4 @@
-import '../../ContributePopup/contribute-popup.css';
+import '../../PopupContribute/popup.css';
 import axios from 'axios';
 import { useState, useContext } from 'react';
 import { API_URL } from '../../../constants/global';
@@ -6,13 +6,13 @@ import { Button } from '../../Buttons/Button';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { Product } from '../../../types/types';
 
-interface ApproveProductPopupProps {
+interface PopupApproveProductProps {
   product: Product;
   onPopupClose: () => void;
   onSuccess: () => void;
 }
 
-export const ApproveProductPopup: React.FC<ApproveProductPopupProps> = ({
+export const PopupApproveProduct: React.FC<PopupApproveProductProps> = ({
   product,
   onPopupClose,
   onSuccess,

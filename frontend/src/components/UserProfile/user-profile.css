@@ -22,21 +22,6 @@
   margin-bottom: 20px;
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  background-color: rgba(233, 247, 245, 0.78);
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  text-align: left;
-}
-
-.table .product-image {
-  width: 50px;
-}
-
 @media (max-width: 768px) {
   .profile-content {
     grid-template-columns: 1fr;

@@ -25,8 +25,7 @@ export const ProductsTable = ({ products }: ProductsTableProps) => {
                   className="product-image"
                 />
               </td>
-              <td>{product.title}</td>
-              <td>{product.materials}</td>
+              <td>{product.materials.join(', ')}</td>
             </tr>
           ))}
         </tbody>

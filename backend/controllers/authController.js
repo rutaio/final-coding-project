@@ -107,3 +107,21 @@ exports.getAllUsers = async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch all users in the server' });
   }
 };
+
+exports.editUserRole = async (req, res) => {
+  try {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ error: 'Unauthorized' });
+    }
+    const { userId } = req.params;
+    const { role } = req.body;
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { role },
+      { new: true }
+    );
+    res.json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};

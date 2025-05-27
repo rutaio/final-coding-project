@@ -4,7 +4,7 @@ import axios from 'axios';
 import { API_URL } from '../../constants/global';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/types';
-import { ContributePopup } from '../ContributePopup/ContributePopup';
+import { PopupContribute } from '../PopupContribute/PopupContribute';
 import { Button } from '../Buttons/Button';
 
 export const ProductList = () => {
@@ -49,7 +49,7 @@ export const ProductList = () => {
         </div>
       </div>
       {isPopupVisible && (
-        <ContributePopup
+        <PopupContribute
           onPopupClose={() => setIsPopupVisible(false)}
           onSuccess={fetchProducts}
         />

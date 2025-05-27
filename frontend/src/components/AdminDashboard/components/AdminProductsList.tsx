@@ -1,14 +1,12 @@
 import { Product } from '../../../types/types';
 import { useState } from 'react';
-import { ApproveProductPopup } from './ApproveProductPopup';
+import { PopupApproveProduct } from './PopupApproveProduct';
 
 interface AdminProductsListProps {
   products: Product[];
   loading: boolean;
   fetchAdminProducts: () => void;
 }
-
-// This component is for Admin
 
 export const AdminProductsList = ({
   products,
@@ -38,7 +36,7 @@ export const AdminProductsList = ({
               {products.map((product) => (
                 <tr key={product._id}>
                   <td>{product.title}</td>
-                  <td>{product.materials}</td>
+                  <td>{product.materials.join(', ')}</td>
                   <td>
                     {!product.isApproved ? (
                       <button onClick={() => setPopupProduct(product)}>
@@ -56,7 +54,7 @@ export const AdminProductsList = ({
       )}
 
       {popupProduct && (
-        <ApproveProductPopup
+        <PopupApproveProduct
           product={popupProduct}
           onPopupClose={() => setPopupProduct(null)}
           onSuccess={() => {

@@ -11,4 +11,6 @@ router.get('/user', authMiddleware, authController.getCurrentUser);
 
 router.get('/all-users', authMiddleware, authController.getAllUsers);
 
+router.put('/edit-role/:userId', authMiddleware, authController.editUserRole);
+
 module.exports = router;

@@ -1,16 +1,16 @@
-import './contribute-popup.css';
+import './popup.css';
 import axios from 'axios';
 import { useState, useContext } from 'react';
 import { API_URL } from '../../constants/global';
 import { Button } from '../Buttons/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 
-interface ContributePopupProps {
+interface PopupContributeProps {
   onPopupClose: () => void;
   onSuccess: () => void;
 }
 
-export const ContributePopup: React.FC<ContributePopupProps> = ({
+export const PopupContribute: React.FC<PopupContributeProps> = ({
   onPopupClose,
   onSuccess,
 }) => {

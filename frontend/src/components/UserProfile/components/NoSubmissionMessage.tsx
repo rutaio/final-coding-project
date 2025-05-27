@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ContributePopup } from '../../ContributePopup/ContributePopup';
+import { PopupContribute } from '../../PopupContribute/PopupContribute';
 
 export const NoSubmissionMessage = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -9,7 +9,7 @@ export const NoSubmissionMessage = () => {
         <p>You don't have any submissions yet.</p>
         <button onClick={() => setIsPopupOpen(true)}>Contribute</button>
         {isPopupOpen && (
-          <ContributePopup
+          <PopupContribute
             onPopupClose={() => setIsPopupOpen(false)}
             onSuccess={() => {
               setIsPopupOpen(false);

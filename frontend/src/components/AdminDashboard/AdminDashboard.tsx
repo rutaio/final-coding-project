@@ -47,12 +47,16 @@ export const AdminDashboard = () => {
   const fetchUsers = async () => {
     setLoadingUsers(true);
     try {
-      const config = { headers: { Authorization: `Bearer ${access_token}` } };
+      const config = {
+        headers: { Authorization: `Bearer ${access_token}` },
+      };
+
       const response = await axios.get<User[]>(
         `${API_URL}/auth/all-users`,
         config
       );
       setUsers(response.data);
+      setLoadingUsers(false);
     } catch (error) {
       console.error('Error fetching all users:', error);
     } finally {
