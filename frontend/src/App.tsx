@@ -29,9 +29,15 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
 
-                <Route element={<ProtectedRoute />}>
-                  <Route path="/profile" element={<UserProfile />} />
-                  <Route path="/admin" element={<AdminDashboard />} />
+                <Route
+                  path="/admin"
+                  element={<ProtectedRoute requiredRole="admin" />}
+                >
+                  <Route index element={<AdminDashboard />} />
+                </Route>
+
+                <Route path="/profile" element={<ProtectedRoute />}>
+                  <Route index element={<UserProfile />} />
                 </Route>
               </Routes>
             </main>

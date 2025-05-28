@@ -10,12 +10,13 @@ import { Tabs } from '../Tabs/Tabs';
 
 type Tab = 'user-info' | 'user-products';
 
+// DOES NOT SHOW PRODUCTS YET
+
 export const UserProfile = () => {
   const { user, access_token } = useContext(AuthContext);
   const [products, setProducts] = useState<Product[]>([]);
   const [loadingProducts, setLoadingProducts] = useState(true);
   const [activeTab, setActiveTab] = useState<Tab>('user-info');
-  const isAdmin = user?.role === 'admin';
 
   const fetchUserProducts = async () => {
     setLoadingProducts(true);
@@ -48,23 +49,21 @@ export const UserProfile = () => {
         <p>Welcome back, {user?.name}!</p>
       </div>
 
-      {isAdmin && (
-        <div className="tabs">
-          <Tabs
-            isActive={activeTab === 'user-info'}
-            onClick={() => setActiveTab('user-info')}
-          >
-            Your Info
-          </Tabs>
+      <div className="tabs">
+        <Tabs
+          isActive={activeTab === 'user-info'}
+          onClick={() => setActiveTab('user-info')}
+        >
+          Your Info
+        </Tabs>
 
-          <Tabs
-            isActive={activeTab === 'user-products'}
-            onClick={() => setActiveTab('user-products')}
-          >
-            Your Submissions
-          </Tabs>
-        </div>
-      )}
+        <Tabs
+          isActive={activeTab === 'user-products'}
+          onClick={() => setActiveTab('user-products')}
+        >
+          Your Submissions
+        </Tabs>
+      </div>
 
       <div className="profile-content">
         {activeTab === 'user-info' && (

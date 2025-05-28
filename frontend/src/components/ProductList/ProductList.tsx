@@ -13,8 +13,11 @@ export const ProductList = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`${API_URL}/products/public`);
-      setProducts(response.data);
+      const response = await axios.get<Product[]>(`${API_URL}/products/public`);
+      const approvedProducts = response.data.filter(
+        (product) => product.status === 'approved'
+      );
+      setProducts(approvedProducts);
     } catch (error) {
       console.log(error);
     }

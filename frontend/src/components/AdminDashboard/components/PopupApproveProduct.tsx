@@ -6,13 +6,13 @@ import { Button } from '../../Buttons/Button';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { Product } from '../../../types/types';
 
-interface PopupApproveProductProps {
+interface PopupEditProductProps {
   product: Product;
   onPopupClose: () => void;
   onSuccess: () => void;
 }
 
-export const PopupApproveProduct: React.FC<PopupApproveProductProps> = ({
+export const PopupEditProduct: React.FC<PopupEditProductProps> = ({
   product,
   onPopupClose,
   onSuccess,
@@ -22,6 +22,7 @@ export const PopupApproveProduct: React.FC<PopupApproveProductProps> = ({
   const [materials, setMaterials] = useState<string>(
     product.materials.join(', ')
   );
+  const [status, setStatus] = useState<string>('under-review');
   const [error, setError] = useState<string | null>(null);
   const { access_token } = useContext(AuthContext);
 
@@ -35,12 +36,12 @@ export const PopupApproveProduct: React.FC<PopupApproveProductProps> = ({
       };
 
       await axios.patch(
-        `${API_URL}/products/${product._id}/approve`,
+        `${API_URL}/products/${product._id}/status`,
         {
           title,
           description,
           materials: materials.split(',').map((m) => m.trim()),
-          isApproved: true,
+          status,
         },
         config
       );
@@ -96,6 +97,19 @@ export const PopupApproveProduct: React.FC<PopupApproveProductProps> = ({
               />
             </div>
 
+            <div className="form-group">
+              <label>Status:</label>
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                required
+              >
+                <option value="under-review">Under Review</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+              </select>
+            </div>
+
             {error && <div className="error-container">{error}</div>}
 
             <div className="popup-actions">
@@ -108,7 +122,7 @@ export const PopupApproveProduct: React.FC<PopupApproveProductProps> = ({
               </Button>
 
               <Button buttonType="primary" type="submit">
-                Save and Approve
+                Save
               </Button>
             </div>
           </form>

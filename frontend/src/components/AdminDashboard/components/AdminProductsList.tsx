@@ -1,6 +1,6 @@
 import { Product } from '../../../types/types';
 import { useState } from 'react';
-import { PopupApproveProduct } from './PopupApproveProduct';
+import { PopupEditProduct } from './PopupApproveProduct';
 import { Table } from '../../Table/Table';
 
 interface AdminProductsListProps {
@@ -26,25 +26,20 @@ export const AdminProductsList = ({
         <div>
           <h3>All Submitted Products</h3>
           <Table
-            headers={['Title', 'Materials', 'Actions']}
+            headers={['Title', 'Materials', 'Status', 'Actions']}
             data={products.map((product) => ({
               key: product._id,
               cells: [
                 product.title,
                 product.materials.join(', '),
-                !product.isApproved ? (
-                  <button onClick={() => setPopupProduct(product)}>
-                    Edit & Approve
-                  </button>
-                ) : (
-                  <span>Approved</span>
-                ),
+                product.status,
+                <button onClick={() => setPopupProduct(product)}>Edit</button>,
               ],
             }))}
           />
 
           {popupProduct && (
-            <PopupApproveProduct
+            <PopupEditProduct
               product={popupProduct}
               onPopupClose={() => setPopupProduct(null)}
               onSuccess={() => {

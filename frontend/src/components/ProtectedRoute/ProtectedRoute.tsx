@@ -1,15 +1,25 @@
 import { useContext } from 'react';
-import { useNavigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
+import { User } from '../../types/types';
 
-export const ProtectedRoute = () => {
-  const { isAuthenticated } = useContext(AuthContext);
-  const navigate = useNavigate();
+interface ProtectedRouteProps {
+  requiredRole?: string;
+}
 
-  if (isAuthenticated) {
-    return <Outlet />;
-  } else {
-    navigate('/login');
-    return null;
+export const ProtectedRoute = ({ requiredRole }: ProtectedRouteProps) => {
+  const { isAuthenticated, user } = useContext(AuthContext) as {
+    isAuthenticated: boolean;
+    user: User | null;
+  };
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
   }
+
+  if (requiredRole && (!user || user.role !== requiredRole)) {
+    return <Navigate to="/" replace />;
+  }
+
+  return <Outlet />;
 };

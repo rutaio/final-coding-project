@@ -44,9 +44,10 @@ const productSchema = new mongoose.Schema(
       },
     },
 
-    isApproved: {
-      type: Boolean,
-      default: false,
+    status: {
+      type: String,
+      enum: ['under review', 'approved', 'rejected'],
+      default: 'under review',
     },
   },
   { timestamps: true, collection: 'products' }

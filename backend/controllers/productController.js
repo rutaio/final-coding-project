@@ -2,7 +2,7 @@ const Product = require('../models/productModel');
 
 exports.getPublicProducts = async (req, res) => {
   try {
-    const products = await Product.find(); // in the future, the filder needs to be added in ({ approved: true })
+    const products = await Product.find({ status: 'approved' });
     res.status(200).json(products);
   } catch (error) {
     res
@@ -61,42 +61,52 @@ exports.createProduct = async (req, res) => {
   try {
     const newProduct = new Product({
       ...req.body,
-      submittedBy: req.user.id,
-      approved: false,
+      userId: req.user.id,
+      source: 'user',
     });
     await newProduct.save();
     res
       .status(201)
       .json({ message: 'Product created successfully', product: newProduct });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        error: error.message || 'Failed to create a product in the server',
-      });
+    res.status(500).json({
+      error: error.message || 'Failed to create a product in the server',
+    });
   }
 };
 
-// Amin only - approve user submitted products:
-exports.approveProduct = async (req, res) => {
+// Amin only:
+exports.updateProductStatus = async (req, res) => {
   if (req.user.role !== 'admin') {
     return res.status(403).json({ error: 'Access denied' });
   }
 
+  const { title, description, materials, status } = req.body;
+
+  const allowedStatuses = ['approved', 'rejected', 'under-review'];
+  if (!allowedStatuses.includes(status)) {
+    return res.status(400).json({ error: 'Such status does not exist' });
+  }
+
+  const update = {
+    title,
+    description,
+    materials,
+    status,
+  };
+
   try {
-    const product = await Product.findByIdAndUpdate(
-      req.params.id,
-      { isApproved: true },
-      { new: true }
-    );
+    const product = await Product.findByIdAndUpdate(req.params.id, update, {
+      new: true,
+    });
 
     if (!product) {
       return res.status(404).json({ error: 'Product not found' });
     }
 
-    res.json({ message: 'Product approved', product });
+    res.json({ message: `Product ${status}`, product });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to approve product' });
+    res.status(500).json({ error: 'Failed to update product' });
   }
 };
 

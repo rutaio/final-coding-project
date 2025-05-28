@@ -16,7 +16,7 @@ export interface Product {
   source: 'user' | 'api';
   userId?: string;
   apiSource?: string;
-  isApproved: boolean;
+  status: 'under review' | 'approved' | 'rejected';
   createdAt: Date;
   updatedAt: Date;
 }
@@ -27,4 +27,3 @@ export interface Messages {
   email: string;
   message: string;
 }
-
