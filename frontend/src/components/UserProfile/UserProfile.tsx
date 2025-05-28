@@ -6,6 +6,7 @@ import { API_URL } from '../../constants/global';
 import { Product } from '../../types/types';
 import { AccountInfo } from './components/AccountInfo';
 import { UserProductsList } from './components/UserProductsList';
+import { Tabs } from '../Tabs/Tabs';
 
 type Tab = 'user-info' | 'user-products';
 
@@ -49,22 +50,19 @@ export const UserProfile = () => {
 
       {isAdmin && (
         <div className="tabs">
-          <button
-            className={`tab-button ${
-              activeTab === 'user-info' ? 'active' : ''
-            }`}
+          <Tabs
+            isActive={activeTab === 'user-info'}
             onClick={() => setActiveTab('user-info')}
           >
             Your Info
-          </button>
-          <button
-            className={`tab-button ${
-              activeTab === 'user-products' ? 'active' : ''
-            }`}
+          </Tabs>
+
+          <Tabs
+            isActive={activeTab === 'user-products'}
             onClick={() => setActiveTab('user-products')}
           >
-            Manage My Products
-          </button>
+            Your Submissions
+          </Tabs>
         </div>
       )}
 

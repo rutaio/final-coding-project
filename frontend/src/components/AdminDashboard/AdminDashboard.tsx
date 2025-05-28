@@ -6,6 +6,7 @@ import { API_URL } from '../../constants/global';
 import { Product, User } from '../../types/types';
 import { AdminProductsList } from './components/AdminProductsList';
 import { AllUsers } from './components/AllUsers';
+import { Tabs } from '../Tabs/Tabs';
 
 type Tab = 'admin-all-products' | 'admin-all-users';
 
@@ -73,22 +74,19 @@ export const AdminDashboard = () => {
 
       {isAdmin && (
         <div className="tabs">
-          <button
-            className={`tab-button ${
-              activeTab === 'admin-all-products' ? 'active' : ''
-            }`}
+          <Tabs
+            isActive={activeTab === 'admin-all-products'}
             onClick={() => setActiveTab('admin-all-products')}
           >
             Manage User Products
-          </button>
-          <button
-            className={`tab-button ${
-              activeTab === 'admin-all-users' ? 'active' : ''
-            }`}
+          </Tabs>
+
+          <Tabs
+            isActive={activeTab === 'admin-all-users'}
             onClick={() => setActiveTab('admin-all-users')}
           >
             Manage Users
-          </button>
+          </Tabs>
         </div>
       )}
 

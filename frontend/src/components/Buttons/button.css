@@ -17,15 +17,17 @@
 }
 
 .button-primary:hover {
-  background: #e30fd5;
+  background: rgb(206, 245, 249);
+  color: #449f73fe;
+  border: 1px solid #449f73fe;
   transform: translateY(-2px);
   opacity: 0.8;
 }
 
 .button-secondary {
-  background: white;
-  color: #c92ac1;
-  border: 2px solid #d51dea;
+  background: rgb(206, 245, 249);
+  color: #449f73fe;
+  border: 1px solid #449f73fe;
 }
 
 .button-secondary:hover {
