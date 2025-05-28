@@ -13,6 +13,9 @@ export const UserProductsList = ({
   products,
   loading,
 }: UserProductsListProps) => {
+
+
+  // move back this inside return!
   if (loading) {
     return <p>Loading your submissions...</p>;
   }
