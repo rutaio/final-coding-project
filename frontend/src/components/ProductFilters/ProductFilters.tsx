@@ -1,53 +1,64 @@
 import './filters.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEarListen } from '@fortawesome/free-solid-svg-icons';
+import { faHand } from '@fortawesome/free-solid-svg-icons';
+import { faFaceGrinTongue } from '@fortawesome/free-solid-svg-icons';
+import { faLeaf } from '@fortawesome/free-solid-svg-icons';
+import { faEarthEurope } from '@fortawesome/free-solid-svg-icons';
 
 interface ProductFiltersProps {
-  onChosenCategory: (category: string) => void;
+  onChosenCategory: (category: string | null) => void;
 }
 
 export const ProductFilters = ({ onChosenCategory }: ProductFiltersProps) => {
   return (
-    <div>
-      <h2>Filter Objects by Senses</h2>
+    <div className="container">
+      <h2>Filter objects by senses</h2>
       <div className="wrapper">
+        <div id="all" className="card" onClick={() => onChosenCategory(null)}>
+          <FontAwesomeIcon icon={faEarthEurope} />
+          <h3>All</h3>
+        </div>
         <div
           id="audio"
           className="card"
           onClick={() => onChosenCategory('audio')}
         >
-          <div>ear icon</div>
-          <h4>Hearing</h4>
+          <FontAwesomeIcon icon={faEarListen} />
+          <h3>Sound</h3>
         </div>
         <div
           id="visual"
           className="card"
           onClick={() => onChosenCategory('visual')}
         >
-          <div>eye icon</div>
-          <h4>Sight</h4>
+          <FontAwesomeIcon icon={faEye} />
+          <h3>Sight</h3>
         </div>
         <div
           id="tactile"
           className="card"
           onClick={() => onChosenCategory('tactile')}
         >
-          <div>hand icon</div>
-          <h4>Touch</h4>
+          <FontAwesomeIcon icon={faHand} />
+          <h3>Touch</h3>
         </div>
         <div
           id="edible"
           className="card"
           onClick={() => onChosenCategory('edible')}
         >
-          <div>mouth icon</div>
-          <h4>Taste</h4>
+          <FontAwesomeIcon icon={faFaceGrinTongue} />
+          <h3>Taste</h3>
         </div>
         <div
           id="scented"
           className="card"
           onClick={() => onChosenCategory('scented')}
         >
-          <div>nose icon</div>
-          <h4>Smell</h4>
+          <FontAwesomeIcon icon={faLeaf} />
+          <h3>Smell</h3>
         </div>
       </div>
     </div>

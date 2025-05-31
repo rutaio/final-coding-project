@@ -50,7 +50,7 @@ export const ProductDetails = () => {
             <p>{product?.description}</p>
           </div>
           <div className="product-materials">
-            <p>{product?.materials}</p>
+            <p>{product?.materials.join(', ')}</p>
           </div>
           <div className="product-actions">
             <Button buttonType="primary" type="button">

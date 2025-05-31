@@ -24,8 +24,8 @@ export const ProductList = () => {
     }
   };
 
-  const fetchProductsByCategory = async (category: string) => {
-    if (!category) {
+  const fetchProductsByCategory = async (category: string | null) => {
+    if (!category || category === 'all') {
       fetchProducts();
       return;
     }
