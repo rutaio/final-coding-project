@@ -9,12 +9,7 @@ export const NoSubmissionMessage = () => {
         <p>You don't have any submissions yet.</p>
         <button onClick={() => setIsPopupOpen(true)}>Contribute</button>
         {isPopupOpen && (
-          <PopupContribute
-            onPopupClose={() => setIsPopupOpen(false)}
-            onSuccess={() => {
-              setIsPopupOpen(false);
-            }}
-          />
+          <PopupContribute onPopupClose={() => setIsPopupOpen(false)} />
         )}
       </div>
     </>

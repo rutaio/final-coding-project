@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.card {
+  min-width: 100px;
+  max-width: 150px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #97e2ed;
+}

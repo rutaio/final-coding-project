@@ -21,6 +21,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         className="product-card-image"
       />
       <div className="product-card-content">
+        <h5>{product.category}</h5>
         <h3>{product.title}</h3>
         <h6>{product.materials}</h6>
         <p>{product.description}</p>

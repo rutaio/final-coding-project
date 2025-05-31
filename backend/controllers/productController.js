@@ -1,8 +1,18 @@
 const Product = require('../models/productModel');
 
+// approved by admin:
 exports.getPublicProducts = async (req, res) => {
   try {
-    const products = await Product.find({ status: 'approved' });
+    const category = req.query.category;
+
+    const filter = { status: 'approved' };
+
+    if (category && category !== 'all') {
+      filter.category = category;
+    }
+
+    // Mongo DB looks for 2 in 1: products that are approved and by category:
+    const products = await Product.find(filter);
     res.status(200).json(products);
   } catch (error) {
     res

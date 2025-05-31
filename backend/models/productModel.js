@@ -22,7 +22,11 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-
+    category: {
+      type: String,
+      enum: ['visual' | 'audio' | 'tactile' | 'scented' | 'edible' | 'unknown'],
+      default: 'unknown',
+    },
     // I want to keep this for the future features when I integrate adding data through APIs:
     source: {
       type: String,

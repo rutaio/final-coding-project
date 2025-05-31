@@ -37,6 +37,7 @@ export const AdminProductsList = ({
                   style={{ width: 30, height: 30, objectFit: 'cover' }}
                 />,
                 product.materials.join(', '),
+                product.category,
                 product.status,
                 <button onClick={() => setPopupProduct(product)}>Edit</button>,
               ],

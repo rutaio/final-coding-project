@@ -33,6 +33,7 @@ export const UserProductsList = ({
                 style={{ width: 50, height: 50, objectFit: 'cover' }}
               />,
               product.title,
+              product.category,
               product.materials.join(', '),
               product.status,
             ],

@@ -6,6 +6,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/types';
 import { PopupContribute } from '../PopupContribute/PopupContribute';
 import { Button } from '../Buttons/Button';
+import { ProductFilters } from '../ProductFilters/ProductFilters';
 
 export const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -20,6 +21,24 @@ export const ProductList = () => {
       setProducts(approvedProducts);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const fetchProductsByCategory = async (category: string) => {
+    if (!category) {
+      fetchProducts();
+      return;
+    }
+    try {
+      const response = await axios.get<Product[]>(
+        `${API_URL}/products/public?category=${category}`
+      );
+      const approvedProducts = response.data.filter(
+        (p) => p.status === 'approved'
+      );
+      setProducts(approvedProducts);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -40,6 +59,9 @@ export const ProductList = () => {
           Contribute
         </Button>
       </div>
+
+      <ProductFilters onChosenCategory={fetchProductsByCategory} />
+
       <div className="container">
         <div className="product-list">
           {products.length === 0 ? (
