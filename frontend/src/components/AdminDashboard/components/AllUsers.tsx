@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { Table } from '../../Table/Table';
+import { formatDate } from '../../../utils/date';
 
 interface AllUsersProps {
   users: User[];
@@ -51,13 +52,14 @@ export const AllUsers = ({ users, loading, fetchUsers }: AllUsersProps) => {
         <div>
           <h3>All Contributors</h3>
           <Table
-            headers={['Name', 'Email', 'Role', 'Actions']}
+            headers={['Name', 'Email', 'Role', 'Joined', 'Actions']}
             data={users.map((user) => ({
               key: user._id,
               cells: [
                 user.name,
                 user.email,
                 user.role,
+                formatDate(user.createdAt),
                 <button className="btn-edit" onClick={() => handleEdit(user)}>
                   Edit Role
                 </button>,

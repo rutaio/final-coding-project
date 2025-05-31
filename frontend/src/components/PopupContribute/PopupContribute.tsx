@@ -5,6 +5,7 @@ import { API_URL } from '../../constants/global';
 import { Button } from '../Buttons/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ThanksMessage } from './components/ThanksMessage';
+import { Navigate } from 'react-router-dom';
 
 interface PopupContributeProps {
   onPopupClose: () => void;
@@ -20,6 +21,10 @@ export const PopupContribute: React.FC<PopupContributeProps> = ({
   const [error, setError] = useState<string | null>(null);
   const { access_token } = useContext(AuthContext);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  if (!access_token) {
+    return <Navigate to="/login" replace />;
+  }
 
   const handleFormSubmit = async (event: React.FormEvent) => {
     event?.preventDefault();

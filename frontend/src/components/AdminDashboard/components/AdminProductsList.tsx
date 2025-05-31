@@ -26,11 +26,16 @@ export const AdminProductsList = ({
         <div>
           <h3>All Submitted Products</h3>
           <Table
-            headers={['Title', 'Materials', 'Status', 'Actions']}
+            headers={['Title', 'Image', 'Materials', 'Status', 'Actions']}
             data={products.map((product) => ({
               key: product._id,
               cells: [
                 product.title,
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  style={{ width: 30, height: 30, objectFit: 'cover' }}
+                />,
                 product.materials.join(', '),
                 product.status,
                 <button onClick={() => setPopupProduct(product)}>Edit</button>,
