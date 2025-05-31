@@ -9,8 +9,6 @@ interface UserProductsListProps {
 
 // This component is for Normal Users
 
-// DOES NOT SHOW PRODUCTS YET
-
 export const UserProductsList = ({
   products,
   loading,

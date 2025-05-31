@@ -10,8 +10,6 @@ import { Tabs } from '../Tabs/Tabs';
 
 type Tab = 'user-info' | 'user-products';
 
-// DOES NOT SHOW PRODUCTS YET
-
 export const UserProfile = () => {
   const { user, access_token } = useContext(AuthContext);
   const [products, setProducts] = useState<Product[]>([]);

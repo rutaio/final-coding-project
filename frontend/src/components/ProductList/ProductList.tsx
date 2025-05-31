@@ -52,10 +52,7 @@ export const ProductList = () => {
         </div>
       </div>
       {isPopupVisible && (
-        <PopupContribute
-          onPopupClose={() => setIsPopupVisible(false)}
-          onSuccess={fetchProducts}
-        />
+        <PopupContribute onPopupClose={() => setIsPopupVisible(false)} />
       )}
     </>
   );

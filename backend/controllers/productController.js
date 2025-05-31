@@ -14,7 +14,7 @@ exports.getPublicProducts = async (req, res) => {
 // For logged-in user (product submissions):
 exports.getMyProducts = async (req, res) => {
   try {
-    const products = await Product.find({ submittedBy: req.user.id });
+    const products = await Product.find({ userId: req.user.id });
     res.json(products);
   } catch (error) {
     res
