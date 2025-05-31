@@ -14,7 +14,7 @@ export interface Product {
   image: string;
   materials: string[];
   source: 'user' | 'api';
-  category: 'visual' | 'audio' | 'tactile' | 'scented' | 'edible' | 'unknown';
+  category: 'visual' | 'audio' | 'tactile' | 'scented' | 'edible';
   userId?: string;
   apiSource?: string;
   status: 'under review' | 'approved' | 'rejected';

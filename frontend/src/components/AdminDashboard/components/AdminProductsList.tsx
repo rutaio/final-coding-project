@@ -1,18 +1,21 @@
 import { Product } from '../../../types/types';
 import { useState } from 'react';
-import { PopupEditProduct } from './PopupApproveProduct';
+import { PopupEditProduct } from './PopupEditProduct';
 import { Table } from '../../Table/Table';
+import { Button } from '../../Buttons/Button';
 
 interface AdminProductsListProps {
   products: Product[];
   loading: boolean;
   fetchAdminProducts: () => void;
+  handleDeleteProduct: (_id: string) => void;
 }
 
 export const AdminProductsList = ({
   products,
   loading,
   fetchAdminProducts,
+  handleDeleteProduct,
 }: AdminProductsListProps) => {
   const [popupProduct, setPopupProduct] = useState<Product | null>(null);
 
@@ -26,7 +29,15 @@ export const AdminProductsList = ({
         <div>
           <h3>All Submitted Products</h3>
           <Table
-            headers={['Title', 'Image', 'Materials', 'Status', 'Actions']}
+            headers={[
+              'Title',
+              'Image',
+              'Materials',
+              'Category',
+              'Status',
+              'Edit',
+              'Delete',
+            ]}
             data={products.map((product) => ({
               key: product._id,
               cells: [
@@ -39,7 +50,22 @@ export const AdminProductsList = ({
                 product.materials.join(', '),
                 product.category,
                 product.status,
-                <button onClick={() => setPopupProduct(product)}>Edit</button>,
+                <Button
+                  type="button"
+                  buttonType="small"
+                  onClick={() => setPopupProduct(product)}
+                >
+                  Edit
+                </Button>,
+                // <button onClick={() => setPopupProduct(product)}>Edit</button>,
+                // <button onClick={() => handleDeleteProduct(product._id)}>Delete</button>,
+                <Button
+                  type="button"
+                  buttonType="small"
+                  onClick={() => handleDeleteProduct(product._id)}
+                >
+                  Delete
+                </Button>,
               ],
             }))}
           />

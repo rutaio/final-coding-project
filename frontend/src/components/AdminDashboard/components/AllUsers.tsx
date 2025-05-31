@@ -6,6 +6,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthContext';
 import { Table } from '../../Table/Table';
 import { formatDate } from '../../../utils/date';
+import { Button } from '../../Buttons/Button';
 
 interface AllUsersProps {
   users: User[];
@@ -60,9 +61,13 @@ export const AllUsers = ({ users, loading, fetchUsers }: AllUsersProps) => {
                 user.email,
                 user.role,
                 formatDate(user.createdAt),
-                <button className="btn-edit" onClick={() => handleEdit(user)}>
+                <Button
+                  type="button"
+                  buttonType="small"
+                  onClick={() => handleEdit(user)}
+                >
                   Edit Role
-                </button>,
+                </Button>,
               ],
             }))}
           />

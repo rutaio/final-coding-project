@@ -19,7 +19,6 @@ router.post('/', authMiddleware, productsController.createProduct);
 // Admin must approve or reject all submitted products before they show up to the public:
 router.patch('/:id/status', authMiddleware, productsController.updateProductStatus);
 
-// tbc:
-// router.delete('/:id', productsController.deleteProduct);
+router.delete('/:id', authMiddleware, productsController.deleteProduct);
 
 module.exports = router;

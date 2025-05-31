@@ -3,7 +3,7 @@ import './button.css';
 interface ButtonProps {
   children: string;
   onClick?: () => void;
-  buttonType?: 'primary' | 'secondary';
+  buttonType?: 'primary' | 'secondary' | 'small';
   type?: 'button' | 'submit';
 }
 

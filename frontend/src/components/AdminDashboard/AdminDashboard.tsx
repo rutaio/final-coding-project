@@ -45,6 +45,34 @@ export const AdminDashboard = () => {
     }
   };
 
+  const handleDeleteProduct = async (_id: string) => {
+    const confirm = window.confirm(
+      'Are you sure you want to delete this product?'
+    );
+
+    if (!confirm) {
+      return;
+    }
+
+    if (!access_token) {
+      alert('You are not authorized to perform this action.');
+      return;
+    }
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    };
+
+    try {
+      await axios.delete(`${API_URL}/products/${_id}`, config);
+      setProducts(products.filter((product) => product._id !== _id));
+    } catch (error) {
+      console.error('Error in deleting a product:', error);
+    }
+  };
+
   const fetchUsers = async () => {
     setLoadingUsers(true);
     try {
@@ -96,6 +124,7 @@ export const AdminDashboard = () => {
             products={products}
             loading={loadingProducts}
             fetchAdminProducts={fetchAdminProducts}
+            handleDeleteProduct={handleDeleteProduct}
           />
         )}
 

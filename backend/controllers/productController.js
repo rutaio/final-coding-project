@@ -85,7 +85,7 @@ exports.createProduct = async (req, res) => {
   }
 };
 
-// Amin only:
+// Admin only:
 exports.updateProductStatus = async (req, res) => {
   if (req.user.role !== 'admin') {
     return res.status(403).json({ error: 'Access denied' });
@@ -120,4 +120,25 @@ exports.updateProductStatus = async (req, res) => {
   }
 };
 
-// update and delete - by admin - tbc
+// Admin only:
+exports.deleteProduct = async (req, res) => {
+  try {
+    if (req.user.role !== 'admin') {
+      return res
+        .status(403)
+        .json({ error: 'No authorized. Admin access required' });
+    }
+
+    const productId = req.params.id;
+
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+
+    if (!deletedProduct) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    res.status(201).json({ message: 'Product deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete a product' });
+  }
+};

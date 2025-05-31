@@ -98,6 +98,21 @@ export const PopupEditProduct: React.FC<PopupEditProductProps> = ({
             </div>
 
             <div className="form-group">
+              <label>Category:</label>
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                required
+              >
+                <option value="visual">Visual</option>
+                <option value="audio">Audio</option>
+                <option value="tactile">Tactile</option>
+                <option value="scented">Scented</option>
+                <option value="edible">Edible</option>
+              </select>
+            </div>
+
+            <div className="form-group">
               <label>Status:</label>
               <select
                 value={status}
