@@ -7,6 +7,7 @@ import { Product } from '../../types/types';
 import { Button } from '../Buttons/Button';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import { toast, Zoom } from 'react-toastify';
 
 export const ProductDetails = () => {
   const navigate = useNavigate();
@@ -32,8 +33,20 @@ export const ProductDetails = () => {
 
     if (isFavorite) {
       removeFromFavorites(product._id);
+      toast(`${product.title} removed from your favorites!`, {
+        type: 'info',
+        position: 'top-left',
+        autoClose: 1000,
+        transition: Zoom,
+      });
     } else {
       addToFavorites(product);
+      toast(`${product.title} added to your favorites!`, {
+        type: 'success',
+        position: 'top-left',
+        autoClose: 1000,
+        transition: Zoom,
+      });
     }
   };
 

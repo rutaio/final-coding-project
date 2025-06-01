@@ -7,8 +7,9 @@ import { Product } from '../../types/types';
 import { AccountInfo } from './components/AccountInfo';
 import { UserProductsList } from './components/UserProductsList';
 import { Tabs } from '../Tabs/Tabs';
+import { FavoriteProducts } from './components/FavoriteProducts';
 
-type Tab = 'user-info' | 'user-products';
+type Tab = 'user-info' | 'user-products' | 'user-favorites';
 
 export const UserProfile = () => {
   const { user, access_token } = useContext(AuthContext);
@@ -61,6 +62,13 @@ export const UserProfile = () => {
         >
           Your Submissions
         </Tabs>
+
+        <Tabs
+          isActive={activeTab === 'user-favorites'}
+          onClick={() => setActiveTab('user-favorites')}
+        >
+          Favorites
+        </Tabs>
       </div>
 
       <div className="profile-content">
@@ -77,6 +85,8 @@ export const UserProfile = () => {
         {activeTab === 'user-products' && (
           <UserProductsList products={products} loading={loadingProducts} />
         )}
+
+        {activeTab === 'user-favorites' && <FavoriteProducts />}
       </div>
     </div>
   );

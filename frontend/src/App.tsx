@@ -1,4 +1,6 @@
 import './App.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navigation } from './components/Navigation/Navigation';
 import { HomePage } from './pages/HomePage/HomePage';
@@ -19,6 +21,7 @@ function App() {
       <Router>
         <AuthProvider>
           <div className="app">
+            <ToastContainer />
             <Navigation />
             <main className="main-content">
               <Routes>
