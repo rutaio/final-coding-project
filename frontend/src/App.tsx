@@ -14,38 +14,41 @@ import { UserProfile } from './components/UserProfile/UserProfile';
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 import { Footer } from './components/Footer/Footer';
 import { AdminDashboard } from './components/AdminDashboard/AdminDashboard';
+import { UserInterfaceProvider } from './contexts/UserInterfaceContext';
 
 function App() {
   return (
     <>
       <Router>
         <AuthProvider>
-          <div className="app">
-            <ToastContainer />
-            <Navigation />
-            <main className="main-content">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/collection" element={<ProductList />} />
-                <Route path="/products/:id" element={<ProductDetails />} />
-                <Route path="/contact" element={<ContactsPage />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
+          <UserInterfaceProvider>
+            <div className="app">
+              <ToastContainer />
+              <Navigation />
+              <main className="main-content">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/collection" element={<ProductList />} />
+                  <Route path="/products/:id" element={<ProductDetails />} />
+                  <Route path="/contact" element={<ContactsPage />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
 
-                <Route
-                  path="/admin"
-                  element={<ProtectedRoute requiredRole="admin" />}
-                >
-                  <Route index element={<AdminDashboard />} />
-                </Route>
+                  <Route
+                    path="/admin"
+                    element={<ProtectedRoute requiredRole="admin" />}
+                  >
+                    <Route index element={<AdminDashboard />} />
+                  </Route>
 
-                <Route path="/profile" element={<ProtectedRoute />}>
-                  <Route index element={<UserProfile />} />
-                </Route>
-              </Routes>
-            </main>
-            <Footer />
-          </div>
+                  <Route path="/profile" element={<ProtectedRoute />}>
+                    <Route index element={<UserProfile />} />
+                  </Route>
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </UserInterfaceProvider>
         </AuthProvider>
       </Router>
     </>

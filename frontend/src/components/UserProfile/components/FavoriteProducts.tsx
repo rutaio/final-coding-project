@@ -3,11 +3,11 @@ import { Button } from '../../Buttons/Button';
 import { NoFavoritesMessage } from './NoFavoritesMessage';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { UserInterfaceContext } from '../../../contexts/UserInterfaceContext';
 
 export const FavoriteProducts = () => {
   const navigate = useNavigate();
-  const { favoriteProducts } = useContext(AuthContext);
+  const { favoriteProducts } = useContext(UserInterfaceContext);
 
   return (
     <div>

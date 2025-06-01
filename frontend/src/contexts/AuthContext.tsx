@@ -3,7 +3,6 @@ import { API_URL } from '../constants/global';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { User } from '../types/types';
-import { Product } from '../types/types';
 
 interface AuthContextType {
   user: User | null;
@@ -14,11 +13,6 @@ interface AuthContextType {
   register: (name: string, email: string, password: string) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
-
-  // for FAVORITES:
-  favoriteProducts: Product[];
-  addToFavorites: (product: Product) => void;
-  removeFromFavorites: (productId: string) => void;
 }
 
 export const AuthContext = createContext<AuthContextType>({
@@ -30,11 +24,6 @@ export const AuthContext = createContext<AuthContextType>({
   register: async () => {},
   login: async () => {},
   logout: () => {},
-
-  // for FAVORITES:
-  favoriteProducts: [],
-  addToFavorites: () => {},
-  removeFromFavorites: () => {},
 });
 
 interface AuthProviderProps {
@@ -49,9 +38,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
-  // for FAVORITES:
-  const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
 
   const navigate = useNavigate();
 
@@ -149,20 +135,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     navigate('/login');
   };
 
-  // for FAVORITES:
-  const addToFavorites = (product: Product) => {
-    setFavoriteProducts((prev) => {
-      if (!prev.some((fav) => fav._id === product._id)) {
-        return [...prev, product];
-      }
-      return prev;
-    });
-  };
-
-  const removeFromFavorites = (productId: string) => {
-    setFavoriteProducts((prev) => prev.filter((fav) => fav._id !== productId));
-  };
-
   return (
     <AuthContext.Provider
       value={{
@@ -174,11 +146,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         register,
         login,
         logout,
-
-        // for FAVORITES:
-        favoriteProducts,
-        addToFavorites,
-        removeFromFavorites,
       }}
     >
       {children}

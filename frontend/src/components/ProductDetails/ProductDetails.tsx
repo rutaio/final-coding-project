@@ -6,7 +6,7 @@ import { API_URL } from '../../constants/global';
 import { Product } from '../../types/types';
 import { Button } from '../Buttons/Button';
 import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
+import { UserInterfaceContext } from '../../contexts/UserInterfaceContext';
 import { toast, Zoom } from 'react-toastify';
 
 export const ProductDetails = () => {
@@ -14,7 +14,7 @@ export const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
   const { favoriteProducts, addToFavorites, removeFromFavorites } =
-    useContext(AuthContext);
+    useContext(UserInterfaceContext);
 
   let isFavorite;
 
