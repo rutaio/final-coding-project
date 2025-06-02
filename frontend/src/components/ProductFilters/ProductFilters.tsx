@@ -13,8 +13,7 @@ interface ProductFiltersProps {
 
 export const ProductFilters = ({ onChosenCategory }: ProductFiltersProps) => {
   return (
-    <div className="container">
-      <h2>Filter objects by senses</h2>
+    <div className="filters-container">
       <div className="wrapper">
         <div id="all" className="card" onClick={() => onChosenCategory(null)}>
           <FontAwesomeIcon icon={faEarthEurope} />

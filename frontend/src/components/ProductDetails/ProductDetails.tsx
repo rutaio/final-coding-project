@@ -86,7 +86,7 @@ export const ProductDetails = () => {
   return (
     <div className="product-detail">
       <div className="product-detail-container">
-        <div className="product-detail-left">
+        <div className="product-detail-hero">
           <img
             src={product.image}
             alt="Product cover image"
@@ -94,7 +94,7 @@ export const ProductDetails = () => {
           />
         </div>
 
-        <div className="product-detail-right">
+        <div className="product-detail-text">
           <div className="product-header">
             <h2>{product.title}</h2>
           </div>
@@ -113,7 +113,7 @@ export const ProductDetails = () => {
               >
                 {isFavorite
                   ? 'Remove from favorites'
-                  : 'Save to your favorites'}
+                  : 'Save to favorites'}
               </Button>
             ) : null}
 

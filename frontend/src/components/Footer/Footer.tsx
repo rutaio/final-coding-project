@@ -8,17 +8,22 @@ export const Footer = () => {
   const { isAuthenticated, user, logout } = useContext(AuthContext);
 
   return (
-    <nav className="navigation">
-      <div className="navigation-container">
+    <nav className="footer">
+      <div className="footer-container">
         <div className="wide-column">
-          <Link to="/" className="navigation-logo">
-            <span>Museum of Rest</span>
+          <Link to="/" className="footer-logo">
+            <span>muserest.com</span>
           </Link>
           <p>
             Discover a collection of things used by humans who have lived in
-            21st century. This collection is curated together with our community
-            of curious people. This collection highlights the Products that
-            Shaped Human Behaviour.
+            21st century. Thsis collection is curated together with our community
+            of curious people. This collection highlights the products that
+            shaped human behaviour and prompted people to rest through
+            relaxation or hobbies.
+          </p>
+          <p>
+            Museum of Rest aka <i>muserest</i> is an artistic coding project by
+            Ruta Jakute.
           </p>
         </div>
         <div className="column">
@@ -43,7 +48,7 @@ export const Footer = () => {
                   )}
                 </li>
                 <li>
-                  <Button onClick={logout} type="button" buttonType="secondary">
+                  <Button onClick={logout} type="button" buttonType="small">
                     Logout
                   </Button>
                 </li>

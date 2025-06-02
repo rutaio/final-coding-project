@@ -1,12 +1,9 @@
 .navigation {
-  background-color: rgb(206, 245, 249);
+  background-color: #c7deef;
   padding: 1rem 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
   width: 100%;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #c7deef;
 }
 
 .navigation-container {
@@ -28,7 +25,7 @@
 .navigation-logo span {
   font-size: 2rem;
   font-weight: 700;
-  color: #449f73fe;
+  color: #2d3748d7;
 }
 
 .navigation ul {
@@ -42,54 +39,28 @@
 
 .navigation a {
   text-decoration: none;
-  color: #4a5568;
-  font-weight: 500;
+  font-family: 'Cabin Sketch', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
   font-size: 1.1rem;
   padding: 0.5rem 1rem;
-  border-radius: 6px;
   transition: all 0.2s ease-in-out;
   position: relative;
-}
-.navigation a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #41eff5a2, #63edaafe);
-  transition: width 0.2s ease-in-out;
-}
-
-.navigation a:hover {
-  color: #63edaafe;
-}
-
-.navigation a:hover::after {
-  width: 80%;
-}
-
-.navigation .active {
-  color: #63edaafe;
-  background-color: #ebf8ff;
-}
-
-.navigation .active::after {
-  width: 80%;
+  color: #2d3748e9;
 }
 
 @media (max-width: 768px) {
-  .navigation {
-    padding: 1rem;
+  .navigation-container {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .navigation ul {
-    gap: 1rem;
+    flex-direction: column;
+    margin-top: 1rem;
   }
 
   .navigation a {
-    font-size: 1rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.5rem 0;
   }
 }

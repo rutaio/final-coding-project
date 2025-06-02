@@ -10,7 +10,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #f5f7fa;
+  background-color: #c7deef6c;
   color: #2d3748;
   line-height: 1.6;
 }
@@ -26,7 +26,8 @@ body {
   width: 100%;
 }
 
-.navigation-logo {
+.navigation-logo,
+.footer-logo {
   font-family: 'Cabin Sketch', sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -44,9 +45,10 @@ h6 {
 }
 
 button {
-  font-family: 'Darumadrop One', sans-serif;
+  font-family: 'Cabin Sketch', sans-serif;
   font-weight: 400;
   font-style: normal;
+  text-transform: uppercase;
 }
 
 p,
@@ -59,7 +61,7 @@ nav a {
 }
 
 a {
-  color: #e30fd5;
+  color: #449f73fe;
   text-decoration: none;
 }
 

@@ -1,20 +1,24 @@
 .product-card {
-  background: #ffffff;
-  border: solid 1px #58f2f5;
   position: relative;
   overflow: hidden;
-  border-radius: 15px;
   transition: all 0.5s ease;
   cursor: pointer;
+  text-align: right;
+}
+
+.product-card-wrapper {
+  padding: 2rem;
 }
 
 .product-card-content {
-  padding: 1.5rem;
+  border: solid 10px #95826d;
+  background: #dfdfdf;
+  padding: 3rem;
 }
 
 .product-card h3 {
   color: #33855efe;
-  font-size: 2rem;
+  font-size: 21px;
   position: relative;
   z-index: 2;
 }
@@ -28,7 +32,8 @@
 .product-card-image {
   width: 100%;
   height: 300px;
-  object-fit: contain;
+  border: 15px solid rgba(255, 255, 255, 0.673);
+  object-fit: cover;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -51,8 +56,8 @@
 }
 
 .product-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #dfdfdf;
 }
 
 .product-card:hover::before {

@@ -1,5 +1,5 @@
 .button {
-  border-radius: 8px;
+  border-radius: 2px;
   border: none;
   width: 250px;
   font-size: 18px;
@@ -11,22 +11,23 @@
 }
 
 .button-primary {
-  background: #0cc2c5;
-  color: white;
-  box-shadow: 0 4px 6px rgba(44, 62, 80, 0.1);
+  background: #daf35cd4;
+  color: #2d3748e9;
+  border: 1px solid #2d3748be;
+  box-shadow: 0 10px 10px rgba(239, 128, 10, 0.1);
 }
 
 .button-primary:hover {
-  background: rgb(206, 245, 249);
-  color: #449f73fe;
+  background: #b9e1ff;
+  color: #2d3748e9;
   border: 1px solid #449f73fe;
   transform: translateY(-2px);
   opacity: 0.8;
 }
 
 .button-secondary {
-  background: rgb(206, 245, 249);
-  color: #449f73fe;
+  background: #b9e1ff;
+  color: #2d3748df;
   border: 1px solid #449f73fe;
 }
 
@@ -39,7 +40,7 @@
 .button-small {
   margin: 0;
   padding: 6px;
-  border-radius: 8px;
+  border-radius: 2px;
   border: none;
   width: 100px;
   font-size: 15px;
