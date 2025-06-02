@@ -118,7 +118,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setUser(response.data.user);
       setIsAuthenticated(true);
 
-      navigate('/profile');
+      // Admins should go to Dashboard, Users to Profile:
+      if (response.data.user.role === 'admin') {
+        navigate('/admin');
+      } else navigate('/profile');
     } catch (error) {
       console.error('Login error:', error);
       setError('Oops, your email or password is not right. Try again?');
