@@ -8,6 +8,7 @@ import { Button } from '../Buttons/Button';
 import { useContext } from 'react';
 import { UserInterfaceContext } from '../../contexts/UserInterfaceContext';
 import { toast, Zoom } from 'react-toastify';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const ProductDetails = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export const ProductDetails = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const { favoriteProducts, addToFavorites, removeFromFavorites } =
     useContext(UserInterfaceContext);
+  const { user } = useContext(AuthContext);
 
   let isFavorite;
 
@@ -29,6 +31,17 @@ export const ProductDetails = () => {
   }
 
   const handleFavoriteClick = () => {
+    if (!user) {
+      toast('Please log in to save favorites', {
+        type: 'info',
+        position: 'top-left',
+        autoClose: 1000,
+        transition: Zoom,
+      });
+      navigate('/login');
+      return;
+    }
+
     if (!product) return;
 
     if (isFavorite) {
@@ -55,7 +68,7 @@ export const ProductDetails = () => {
   };
 
   useEffect(() => {
-    const fetchCars = async () => {
+    const fetchProducts = async () => {
       try {
         const response = await axios.get(`${API_URL}/products/${id}`);
         setProduct(response.data);
@@ -63,7 +76,7 @@ export const ProductDetails = () => {
         console.log(error);
       }
     };
-    fetchCars();
+    fetchProducts();
   }, [id]);
 
   if (!product) {
@@ -92,13 +105,17 @@ export const ProductDetails = () => {
             <p>{product.materials.join(', ')}</p>
           </div>
           <div className="product-actions">
-            <Button
-              buttonType="primary"
-              type="button"
-              onClick={handleFavoriteClick}
-            >
-              {isFavorite ? 'Remove from favorites' : 'Save to your favorites'}
-            </Button>
+            {user && user.role !== 'admin' ? (
+              <Button
+                onClick={handleFavoriteClick}
+                buttonType="primary"
+                type="button"
+              >
+                {isFavorite
+                  ? 'Remove from favorites'
+                  : 'Save to your favorites'}
+              </Button>
+            ) : null}
 
             <Button
               buttonType="secondary"
