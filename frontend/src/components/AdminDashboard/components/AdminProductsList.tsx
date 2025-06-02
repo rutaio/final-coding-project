@@ -57,8 +57,6 @@ export const AdminProductsList = ({
                 >
                   Edit
                 </Button>,
-                // <button onClick={() => setPopupProduct(product)}>Edit</button>,
-                // <button onClick={() => handleDeleteProduct(product._id)}>Delete</button>,
                 <Button
                   type="button"
                   buttonType="small"

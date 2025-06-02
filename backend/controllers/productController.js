@@ -86,24 +86,20 @@ exports.createProduct = async (req, res) => {
 };
 
 // Admin only:
-exports.updateProductStatus = async (req, res) => {
+exports.updateProduct = async (req, res) => {
   if (req.user.role !== 'admin') {
     return res.status(403).json({ error: 'Access denied' });
   }
 
-  const { title, description, materials, status } = req.body;
+  const { title, description, materials, category, status } = req.body;
 
-  const allowedStatuses = ['approved', 'rejected', 'under-review'];
-  if (!allowedStatuses.includes(status)) {
-    return res.status(400).json({ error: 'Such status does not exist' });
-  }
+  const update = {};
 
-  const update = {
-    title,
-    description,
-    materials,
-    status,
-  };
+  if (title !== undefined) update.title = title;
+  if (description !== undefined) update.description = description;
+  if (materials !== undefined) update.materials = materials;
+  if (category !== undefined) update.category = category;
+  if (status !== undefined) update.status = status;
 
   try {
     const product = await Product.findByIdAndUpdate(req.params.id, update, {
@@ -114,8 +110,9 @@ exports.updateProductStatus = async (req, res) => {
       return res.status(404).json({ error: 'Product not found' });
     }
 
-    res.json({ message: `Product ${status}`, product });
+    res.json({ message: 'Product updated successfully!', product });
   } catch (error) {
+    console.error('Update error:', error);
     res.status(500).json({ error: 'Failed to update product' });
   }
 };

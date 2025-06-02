@@ -16,8 +16,9 @@ router.get('/admin', authMiddleware, productsController.getAllProducts);
 router.get('/:id', productsController.getProductById);
 router.post('/', authMiddleware, productsController.createProduct);
 
-// Admin must approve or reject all submitted products before they show up to the public:
-router.patch('/:id/status', authMiddleware, productsController.updateProductStatus);
+// Admin must approve or reject all submitted products before they show up to the public;
+// Admin also can update user products inputs for clarity:
+router.patch('/:id', authMiddleware, productsController.updateProduct);
 
 router.delete('/:id', authMiddleware, productsController.deleteProduct);
 
