@@ -17,9 +17,6 @@ export const Navigation = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/collection">Collection</Link>
-          </li>
 
           {isAuthenticated ? (
             <>

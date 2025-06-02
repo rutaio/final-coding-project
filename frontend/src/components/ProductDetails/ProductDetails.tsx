@@ -64,7 +64,7 @@ export const ProductDetails = () => {
   };
 
   const handleBackClick = () => {
-    navigate('/collection');
+    navigate('/');
   };
 
   useEffect(() => {

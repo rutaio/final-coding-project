@@ -27,8 +27,7 @@ function App() {
               <Navigation />
               <main className="main-content">
                 <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/collection" element={<ProductList />} />
+                  <Route path="/" element={<ProductList />} />
                   <Route path="/products/:id" element={<ProductDetails />} />
                   <Route path="/contact" element={<ContactsPage />} />
                   <Route path="/register" element={<Register />} />

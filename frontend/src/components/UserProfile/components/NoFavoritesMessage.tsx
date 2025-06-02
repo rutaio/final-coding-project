@@ -5,7 +5,7 @@ export const NoFavoritesMessage = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/collection');
+    navigate('/');
   };
   
   return (

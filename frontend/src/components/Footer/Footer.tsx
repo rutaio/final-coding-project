@@ -16,9 +16,9 @@ export const Footer = () => {
           </Link>
           <p>
             Discover a collection of things used by humans who have lived in
-            21st century. Thsis collection is curated together with our community
-            of curious people. This collection highlights the products that
-            shaped human behaviour and prompted people to rest through
+            21st century. Thsis collection is curated together with our
+            community of curious people. This collection highlights the products
+            that shaped human behaviour and prompted people to rest through
             relaxation or hobbies.
           </p>
           <p>
@@ -28,9 +28,6 @@ export const Footer = () => {
         </div>
         <div className="column">
           <ul>
-            <li>
-              <Link to="/collection">Collection</Link>
-            </li>
             <li>
               <Link to="/contact">Contact</Link>
             </li>
