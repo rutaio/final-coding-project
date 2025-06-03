@@ -59,11 +59,27 @@
 
 @media (max-width: 768px) {
   .product-detail-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .product-detail-hero {
+    padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .product-detail-image {
-    height: 300px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .product-detail-text {
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .product-actions {
