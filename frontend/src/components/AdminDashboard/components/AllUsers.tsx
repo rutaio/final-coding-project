@@ -51,7 +51,6 @@ export const AllUsers = ({ users, loading, fetchUsers }: AllUsersProps) => {
         <p>The museum does not have any contributors yet..</p>
       ) : (
         <div>
-          <h3>All Contributors</h3>
           <Table
             headers={['Name', 'Email', 'Role', 'Joined', 'Actions']}
             data={users.map((user) => ({

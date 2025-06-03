@@ -4,7 +4,7 @@ import axios from 'axios';
 import { API_URL } from '../../constants/global';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/types';
-import { PopupContribute } from '../PopupContribute/PopupContribute';
+import { PopupContribute } from '../Forms/PopupContribute';
 import { Button } from '../Buttons/Button';
 import { ProductFilters } from '../ProductFilters/ProductFilters';
 

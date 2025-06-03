@@ -27,7 +27,6 @@ export const AdminProductsList = ({
         <p>No contributions yet.</p>
       ) : (
         <div>
-          <h3>All Submitted Products</h3>
           <Table
             headers={[
               'Title',

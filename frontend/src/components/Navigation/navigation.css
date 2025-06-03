@@ -1,9 +1,7 @@
 .navigation {
   background-color: #c7deef;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 1.5rem;
   width: 100%;
-  border-bottom: 1px solid #c7deef;
 }
 
 .navigation-container {
@@ -15,17 +13,7 @@
 }
 
 .navigation-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: #2d3748;
-}
-
-.navigation-logo span {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #2d3748d7;
+  font-size: 24px;
 }
 
 .navigation ul {
@@ -45,8 +33,17 @@
   font-size: 1.1rem;
   padding: 0.5rem 1rem;
   transition: all 0.2s ease-in-out;
-  position: relative;
   color: #2d3748e9;
+}
+
+ul li a:hover {
+  color: #07989b;
+  text-decoration: none;
+}
+
+a:active {
+  color: #07989b;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {

@@ -1,3 +1,19 @@
+/* for popups */
+.overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* for Register and Login */
 .auth-container {
   background-image: url('https://images.unsplash.com/photo-1638291792853-5ab967de3611?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-repeat: no-repeat;
@@ -12,16 +28,17 @@
 .form-wrapper {
   background-color: #c7deef;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  padding: 2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
+  box-shadow: 0 10px 10px #ffff99;
 }
 
 .form-wrapper h2 {
-  margin-bottom: 24px;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
   text-align: center;
-  color: #333;
+  color: #4a5568;
 }
 
 .form {
@@ -31,26 +48,37 @@
 }
 
 .form-group {
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 .form-group label {
-  font-weight: 500;
+  display: block;
   font-size: 0.9rem;
-  color: #555;
+  color: #4a5568;
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #ffff99;
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.3s;
 }
 
-.form-group input:focus {
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
   border-color: #449f73fe;
   outline: none;
 }
@@ -60,12 +88,28 @@
   color: #a31490ce;
   padding: 10px;
   border-radius: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   font-size: 0.9rem;
 }
 
-.login-link {
+.link {
   margin-top: 20px;
   text-align: left;
   font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.thanks-banner {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 20px;
+  text-align: left;
 }

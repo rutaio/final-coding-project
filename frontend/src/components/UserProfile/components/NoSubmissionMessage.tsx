@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PopupContribute } from '../../PopupContribute/PopupContribute';
+import { PopupContribute } from '../../Forms/PopupContribute';
 import { Button } from '../../Buttons/Button';
 
 export const NoSubmissionMessage = () => {

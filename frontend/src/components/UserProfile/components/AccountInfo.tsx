@@ -7,7 +7,6 @@ interface AccountInfoProps {
 export const AccountInfo = ({ user }: AccountInfoProps) => {
   return (
     <div>
-      <h3>Account Information</h3>
       <div>
         <p>
           <strong>Name:</strong> {user?.name || 'N/A'}

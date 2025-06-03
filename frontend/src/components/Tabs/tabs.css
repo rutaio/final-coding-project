@@ -11,17 +11,23 @@
   border-bottom: 3px solid transparent;
   cursor: pointer;
   font-weight: 600;
-  font-size: 17px;
-  color: #07989b;
+  font-size: 21px;
+  color: #4a5568;
   transition: all 0.3s ease;
   margin-right: 5px;
 }
 
 .tab-button:hover {
-  color: #0cc2c5;
+  color: #07989b;
 }
 
 .tab-button.active {
-  color: #0cc2c5;
+  color: #07989b;
   border-bottom: 2px solid #0cc2c5;
+}
+
+@media (max-width: 768px) {
+  .tab-button {
+    font-size: 16px;
+  }
 }

@@ -15,8 +15,6 @@ export const UserProductsList = ({
 }: UserProductsListProps) => {
   return (
     <div>
-      <h3>Your Submissions</h3>
-
       {loading ? (
         <p>Loading your submissions...</p>
       ) : products.length === 0 ? (

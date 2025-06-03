@@ -1,4 +1,4 @@
-import '../../PopupContribute/popup.css';
+import '../../Forms/forms.css';
 import axios from 'axios';
 import { useState, useContext } from 'react';
 import { API_URL } from '../../../constants/global';
@@ -72,8 +72,8 @@ export const PopupEditProduct: React.FC<PopupEditProductProps> = ({
   };
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-content">
+    <div className="overlay-container">
+      <div className="form-wrapper">
         <h2>Edit and Approve This Submission</h2>
         <form onSubmit={handleFormSubmit}>
           <div className="form-group">
@@ -139,9 +139,9 @@ export const PopupEditProduct: React.FC<PopupEditProductProps> = ({
             </select>
           </div>
 
-          {error && <div className="error-container">{error}</div>}
+          {error && <div className="error-message">{error}</div>}
 
-          <div className="popup-actions">
+          <div className="actions">
             <Button onClick={onPopupClose} buttonType="secondary" type="button">
               Cancel
             </Button>

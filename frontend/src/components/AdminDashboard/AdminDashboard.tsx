@@ -106,14 +106,14 @@ export const AdminDashboard = () => {
             isActive={activeTab === 'admin-all-products'}
             onClick={() => setActiveTab('admin-all-products')}
           >
-            Manage User Products
+            Manage All Products
           </Tabs>
 
           <Tabs
             isActive={activeTab === 'admin-all-users'}
             onClick={() => setActiveTab('admin-all-users')}
           >
-            Manage Users
+            Manage All Users
           </Tabs>
         </div>
       )}

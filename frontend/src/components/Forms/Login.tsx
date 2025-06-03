@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import './auth.css';
+import './forms.css';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Button } from '../Buttons/Button';
 
@@ -50,7 +50,7 @@ export const Login = () => {
           </Button>
         </form>
 
-        <div className="login-link">
+        <div className="link">
           Don't have an account yet?{' '}
           <Link to="/register">Become Contributor</Link>
         </div>

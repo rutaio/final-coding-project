@@ -1,4 +1,4 @@
-import '../../PopupContribute/popup.css';
+import '../../Forms/forms.css';
 import { useState, useEffect } from 'react';
 import { User } from '../../../types/types';
 import { Button } from '../../Buttons/Button';
@@ -32,8 +32,8 @@ export const PopupEditUser: React.FC<PopupEditUserProps> = ({
   };
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-content">
+    <div className="overlay-container">
+      <div className="form-wrapper">
         <span className="close" onClick={onPopupClose}>
           x
         </span>

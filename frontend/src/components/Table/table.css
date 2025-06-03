@@ -1,11 +1,30 @@
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.scroll-hint {
+  font-size: 15px;
+  color: #ba14ed;
+  margin-bottom: 0.5rem;
+  display: none;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .scroll-hint {
+    display: block;
+  }
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
-  background-color: rgba(233, 247, 245, 0.78);
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid #449f73fe;
+  box-shadow: 0 4px 4px #ffff99;
   text-align: left;
 }
 
@@ -22,6 +41,22 @@ thead {
   background-color: rgb(206, 245, 249);
 }
 
+.table thead tr th {
+  padding: 10px;
+  font-family: 'Cabin Sketch', sans-serif;
+  text-transform: uppercase;
+}
+
 .table tbody td {
-  padding: 5px 5px 5px 0;
+  padding: 5px;
+}
+
+@media (max-width: 768px) {
+  .table {
+    width: 700px;
+  }
+
+  .scroll-hint {
+    display: block;
+  }
 }

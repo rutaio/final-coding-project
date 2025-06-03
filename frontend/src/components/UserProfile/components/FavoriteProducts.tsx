@@ -11,8 +11,6 @@ export const FavoriteProducts = () => {
 
   return (
     <div>
-      <h3>Favorites</h3>
-
       {favoriteProducts.length === 0 ? (
         <NoFavoritesMessage />
       ) : (

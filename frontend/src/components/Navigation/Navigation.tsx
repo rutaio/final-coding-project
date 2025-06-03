@@ -9,39 +9,37 @@ export const Navigation = () => {
 
   return (
     <nav className="navigation">
-      <div className="navigation-container">
-        <Link to="/" className="navigation-logo">
-          <span>Museum of Rest</span>
-        </Link>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
+    <div className="navigation-container">
+      <div className="navigation-logo">Museum of Rest</div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
 
-          {isAuthenticated ? (
-            <>
-              <li>
-                {user?.role === 'admin' ? (
-                  <Link to="/admin">Admin Dashboard</Link>
-                ) : (
-                  <Link to="/profile">Profile</Link>
-                )}
-              </li>
-              <li>
-                <Button onClick={logout} type="button" buttonType="secondary">
-                  Logout
-                </Button>
-              </li>
-            </>
-          ) : (
-            <>
-              <li className="login-item">
-                <Link to="/login">Login</Link>
-              </li>
-            </>
-          )}
-        </ul>
-      </div>
+        {isAuthenticated ? (
+          <>
+            <li>
+              {user?.role === 'admin' ? (
+                <Link to="/admin">Admin Dashboard</Link>
+              ) : (
+                <Link to="/profile">Profile</Link>
+              )}
+            </li>
+            <li>
+              <Button onClick={logout} type="button" buttonType="small">
+                Logout
+              </Button>
+            </li>
+          </>
+        ) : (
+          <>
+            <li className="login-item">
+              <Link to="/login">Login</Link>
+            </li>
+          </>
+        )}
+      </ul>
+    </div>
     </nav>
   );
 };

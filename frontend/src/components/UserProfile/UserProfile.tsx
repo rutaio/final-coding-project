@@ -45,7 +45,7 @@ export const UserProfile = () => {
     <div className="profile-container">
       <div className="profile-header">
         <h1>Your Profile</h1>
-        <p>Welcome back, {user?.name}!</p>
+        <p>Hey collector! Welcome back, {user?.name}!</p>
       </div>
 
       <div className="tabs">
@@ -53,14 +53,14 @@ export const UserProfile = () => {
           isActive={activeTab === 'user-info'}
           onClick={() => setActiveTab('user-info')}
         >
-          Your Info
+          Info
         </Tabs>
 
         <Tabs
           isActive={activeTab === 'user-products'}
           onClick={() => setActiveTab('user-products')}
         >
-          Your Submissions
+          Submissions
         </Tabs>
 
         <Tabs

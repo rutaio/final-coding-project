@@ -5,7 +5,7 @@
 }
 
 .wrapper {
-  background-color: #c7deef;
+  background-color: #ffffcb;
   display: flex;
   justify-content: space-evenly;
   align-content: center;
@@ -30,4 +30,12 @@
 .card:hover {
   transform: scale(1.05);
   color: #10ab60fe;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
 }

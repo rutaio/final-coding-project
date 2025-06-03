@@ -10,23 +10,26 @@ interface TableProps {
 
 export const Table = ({ headers, data }: TableProps) => {
   return (
-    <table className="table">
-      <thead>
-        <tr>
-          {headers.map((header, headerIndex) => (
-            <th key={headerIndex}>{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((row) => (
-          <tr key={row.key}>
-            {row.cells.map((cell, cellIndex) => (
-              <td key={cellIndex}>{cell}</td>
+    <div className="table-wrapper">
+      <p className="scroll-hint">Swipe to scroll</p>
+      <table className="table">
+        <thead>
+          <tr>
+            {headers.map((header, headerIndex) => (
+              <th key={headerIndex}>{header}</th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {data.map((row) => (
+            <tr key={row.key}>
+              {row.cells.map((cell, cellIndex) => (
+                <td key={cellIndex}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
