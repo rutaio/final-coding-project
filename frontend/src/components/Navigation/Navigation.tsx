@@ -1,45 +1,35 @@
 import './navigation.css';
-import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
-import { Button } from '../Buttons/Button';
+import { MobileMenu } from './components/MobileMenu';
+import { DesktopMenu } from './components/DesktopMenu';
 
 export const Navigation = () => {
   const { isAuthenticated, user, logout } = useContext(AuthContext);
+  const isAdmin = user?.role === 'admin';
 
   return (
     <nav className="navigation">
-    <div className="navigation-container">
-      <div className="navigation-logo">Museum of Rest</div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
+      <div className="navigation-container">
+        <div className="navigation-logo">Museum of Rest</div>
 
-        {isAuthenticated ? (
-          <>
-            <li>
-              {user?.role === 'admin' ? (
-                <Link to="/admin">Admin Dashboard</Link>
-              ) : (
-                <Link to="/profile">Profile</Link>
-              )}
-            </li>
-            <li>
-              <Button onClick={logout} type="button" buttonType="small">
-                Logout
-              </Button>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className="login-item">
-              <Link to="/login">Login</Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </div>
+        <div className="desktop-nav">
+          <DesktopMenu
+            isAuthenticated={isAuthenticated}
+            isAdmin={isAdmin}
+            logout={logout}
+            user={user}
+          />
+        </div>
+        <div className="mobile-nav">
+          <MobileMenu
+            isAuthenticated={isAuthenticated}
+            isAdmin={isAdmin}
+            logout={logout}
+            user={user}
+          />
+        </div>
+      </div>
     </nav>
   );
 };

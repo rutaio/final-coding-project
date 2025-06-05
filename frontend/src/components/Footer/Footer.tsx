@@ -1,12 +1,7 @@
 import './footer.css';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
-import { Button } from '../Buttons/Button';
 
 export const Footer = () => {
-  const { isAuthenticated, user, logout } = useContext(AuthContext);
-
   return (
     <nav className="footer">
       <div className="footer-container">
@@ -29,34 +24,27 @@ export const Footer = () => {
         <div className="column">
           <ul>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/">All</Link>
+            </li>
+            <li>
+              <Link to="/products/public?category=audio">Sound</Link>
+            </li>
+            <li>
+              <Link to="/products/public?category=visual">Sight</Link>
             </li>
           </ul>
         </div>
         <div className="column">
           <ul>
-            {isAuthenticated ? (
-              <>
-                <li>
-                  {user?.role === 'admin' ? (
-                    <Link to="/admin">Admin Dashboard</Link>
-                  ) : (
-                    <Link to="/profile">Profile</Link>
-                  )}
-                </li>
-                <li>
-                  <Button onClick={logout} type="button" buttonType="small">
-                    Logout
-                  </Button>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className="login-item">
-                  <Link to="/login">Login</Link>
-                </li>
-              </>
-            )}
+            <li>
+              <Link to="/products/public?category=tactile">Touch</Link>
+            </li>
+            <li>
+              <Link to="/products/public?category=edible">Taste</Link>
+            </li>
+            <li>
+              <Link to="/products/public?category=scented">Smell</Link>
+            </li>
           </ul>
         </div>
       </div>

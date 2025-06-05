@@ -16,7 +16,16 @@
   font-size: 24px;
 }
 
-.navigation ul {
+.desktop-nav {
+  display: flex;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+/* only in DesktopMenu.tsx: */
+.desktop-menu {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -47,17 +56,51 @@ a:active {
 }
 
 @media (max-width: 768px) {
-  .navigation-container {
-    flex-direction: column;
-    align-items: flex-start;
+  .desktop-nav {
+    display: none;
   }
 
-  .navigation ul {
-    flex-direction: column;
-    margin-top: 1rem;
+  .navigation-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: end;
   }
 
   .navigation a {
     padding: 0.5rem 0;
+  }
+
+  .navigation-logo {
+    width: 100%;
+    text-align: left;
+  }
+
+  .mobile-nav {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .hamburger-icon {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #333;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+    background: #c7deef;
+    list-style: none;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  .mobile-menu button {
+    width: 20%;
   }
 }

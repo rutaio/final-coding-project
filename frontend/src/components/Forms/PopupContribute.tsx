@@ -57,8 +57,8 @@ export const PopupContribute: React.FC<PopupContributeProps> = ({
   return (
     <div className="overlay-container">
       {isSubmitted ? (
-        <div>
-          <div className="thanks-banner">
+        <div className='thanks-banner'>
+          <div className="thanks-message">
             <p>
               Thanks for your contribution! Our museum curator is now carefully
               reviewing your submission. Wait for a few days until it is live on

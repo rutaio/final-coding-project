@@ -4,9 +4,6 @@
   transition: all 0.5s ease;
   cursor: pointer;
   text-align: right;
-}
-
-.product-card-wrapper {
   padding: 2rem;
 }
 
@@ -65,3 +62,20 @@
   transform: rotate(-45deg) translateY(100%);
 }
 
+@media (max-width: 768px) {
+  .product-card {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .product-card-content {
+    border: solid 10px #95826d;
+    background: #dfdfdf;
+    padding: 1.5rem;
+  }
+
+  .product-card-image {
+    width: 100%;
+    height: 100%;
+  }
+}

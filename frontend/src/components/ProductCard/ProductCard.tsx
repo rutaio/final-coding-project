@@ -15,17 +15,15 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <div className="product-card" onClick={handleCardClick}>
-      <div className="product-card-wrapper">
-        <div className="product-card-content">
-          <img
-            src={product.image}
-            alt="Product cover image"
-            className="product-card-image"
-          />
-        </div>
-        <h3>{product.title}</h3>
-        <h6>{product.materials.join(', ')}</h6>
+      <div className="product-card-content">
+        <img
+          src={product.image}
+          alt="Product cover image"
+          className="product-card-image"
+        />
       </div>
+      <h3>{product.title}</h3>
+      <h6>{product.materials.join(', ')}</h6>
     </div>
   );
 };

@@ -32,9 +32,9 @@
 
 @media (max-width: 768px) {
   .hero {
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-size: cover;
-    background-position: left;
+    background-position: center;
   }
 
   .hero h1 {
