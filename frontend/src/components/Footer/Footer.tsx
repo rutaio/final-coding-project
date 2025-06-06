@@ -32,18 +32,18 @@ export const Footer = () => {
           <ul>
             <li>
               <Link to="/">
-                <FontAwesomeIcon icon={faEarthEurope} /> All
+                <FontAwesomeIcon icon={faEarthEurope} /> <span>All</span>
               </Link>
             </li>
             <li>
-              <Link to="/?category=audio">
-                <FontAwesomeIcon icon={faEarListen} /> Sound
+              <Link to="/?category=audio" aria-label="Audio category">
+                <FontAwesomeIcon icon={faEarListen} /> <span>Sound</span>
               </Link>
             </li>
             <li>
-              <Link to="/?category=visual">
+              <Link to="/?category=visual" aria-label="Visual category">
                 {' '}
-                <FontAwesomeIcon icon={faEye} /> Sight
+                <FontAwesomeIcon icon={faEye} /> <span>Sight</span>
               </Link>
             </li>
           </ul>
@@ -51,21 +51,21 @@ export const Footer = () => {
         <div className="column">
           <ul>
             <li>
-              <Link to="/?category=tactile">
+              <Link to="/?category=tactile" aria-label="Tactile category">
                 {' '}
-                <FontAwesomeIcon icon={faHand} /> Touch
+                <FontAwesomeIcon icon={faHand} /> <span>Touch</span>
               </Link>
             </li>
             <li>
-              <Link to="/?category=edible">
+              <Link to="/?category=edible" aria-label="Edible category">
                 {' '}
-                <FontAwesomeIcon icon={faFaceGrinTongue} /> Taste
+                <FontAwesomeIcon icon={faFaceGrinTongue} /> <span>Taste</span>
               </Link>
             </li>
             <li>
-              <Link to="/?category=scented">
+              <Link to="/?category=scented" aria-label="Scented category">
                 {' '}
-                <FontAwesomeIcon icon={faLeaf} /> Smell
+                <FontAwesomeIcon icon={faLeaf} /> <span>Smell</span>
               </Link>
             </li>
           </ul>

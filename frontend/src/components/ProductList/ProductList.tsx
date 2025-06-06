@@ -7,7 +7,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/types';
 import { PopupContribute } from '../Forms/PopupContribute';
 import { Button } from '../Buttons/Button';
-import { ProductFilters } from '../ProductFilters/ProductFilters';
+import { ProductCategories } from '../ProductFilters/ProductCategories';
 
 export const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -59,10 +59,13 @@ export const ProductList = () => {
         </Button>
       </div>
 
-      <ProductFilters onChosenCategory={fetchProducts} />
+      {/* needed for Footer links to scroll to the correct place: */}
+      <div ref={productListRef}>
+        <ProductCategories />
+      </div>
 
-      <div className="container">
-        <div className="product-list" ref={productListRef}>
+      <div className="product-list-container">
+        <div className="product-list">
           {products.length === 0 ? (
             <p>No products found. Check back soon!</p>
           ) : (

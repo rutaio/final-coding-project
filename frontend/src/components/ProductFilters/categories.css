@@ -1,10 +1,10 @@
-.filters-container {
+.categories-banner {
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.wrapper {
+.categories-wrapper {
   background-color: #ffffcb;
   display: flex;
   justify-content: space-evenly;
@@ -12,28 +12,37 @@
   gap: 10px;
 }
 
-.wrapper h3 {
+.categories-wrapper h3 {
   text-transform: uppercase;
   color: #2d3748d7;
 }
 
-.card {
+.single-category-container {
   min-width: 100px;
   max-width: 150px;
   padding: 10px;
   text-align: center;
+  text-decoration: none;
   color: #2d3748d7;
   cursor: pointer;
   transition: all 0.5s ease;
 }
 
-.card:hover {
+.single-category-container:hover {
   transform: scale(1.05);
   color: #10ab60fe;
 }
 
+.single-category-container:active {
+  color: #10ab60fe;
+}
+
 @media (max-width: 768px) {
-  .wrapper {
+  .categories-banner {
+    position: static;
+  }
+
+  .categories-wrapper {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
