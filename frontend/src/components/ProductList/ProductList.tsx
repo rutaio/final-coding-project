@@ -1,5 +1,5 @@
 import './product-list.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../constants/global';
@@ -15,6 +15,9 @@ export const ProductList = () => {
 
   const [searchParams] = useSearchParams();
   const categoryFromURL = searchParams.get('category');
+
+  // needed for Footer links to scroll to the correct place:
+  const productListRef = useRef<HTMLDivElement | null>(null);
 
   const fetchProducts = async (category: string | null) => {
     try {
@@ -35,6 +38,11 @@ export const ProductList = () => {
 
   useEffect(() => {
     fetchProducts(categoryFromURL);
+
+    // needed for Footer links to scroll to the correct place:
+    if (categoryFromURL && productListRef.current) {
+      productListRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [categoryFromURL]);
 
   return (
@@ -54,7 +62,7 @@ export const ProductList = () => {
       <ProductFilters onChosenCategory={fetchProducts} />
 
       <div className="container">
-        <div className="product-list">
+        <div className="product-list" ref={productListRef}>
           {products.length === 0 ? (
             <p>No products found. Check back soon!</p>
           ) : (

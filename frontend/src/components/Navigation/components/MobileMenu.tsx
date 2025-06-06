@@ -18,6 +18,7 @@ export const MobileMenu = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const handleClick = () => setIsMenuOpen(false);
 
   return (
     <>
@@ -28,28 +29,40 @@ export const MobileMenu = ({
       {isMenuOpen && (
         <ul className="mobile-menu">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" onClick={handleClick}>
+              Home
+            </Link>
           </li>
           {isAuthenticated ? (
             <>
               {isAdmin ? (
                 <li>
-                  <Link to="/admin">Admin</Link>
+                  <Link to="/admin" onClick={handleClick}>
+                    Admin
+                  </Link>
                 </li>
               ) : (
                 <li>
-                  <Link to="/profile">Your Profile</Link>
+                  <Link to="/profile" onClick={handleClick}>
+                    Profile
+                  </Link>
                 </li>
               )}
               <li>
-                <Button onClick={logout} buttonType="small" type="button">
+                <Button
+                  onClick={() => {
+                    logout(), handleClick();
+                  }}
+                  buttonType="small"
+                  type="button"
+                >
                   Logout
                 </Button>
               </li>
             </>
           ) : (
             <li>
-              <Link to="/login">
+              <Link to="/login" onClick={handleClick}>
                 <Button buttonType="small" type="button">
                   Login
                 </Button>
