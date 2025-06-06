@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from 'react';
+import { createContext, useState, useEffect, ReactNode } from 'react';
 import { Product } from '../types/types';
 
 interface UserInterfaceContextType {
@@ -20,7 +20,27 @@ interface UserInterfaceProviderProps {
 export const UserInterfaceProvider = ({
   children,
 }: UserInterfaceProviderProps) => {
-  const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
+  // needed when using localStorage to store favorites:
+  const [favoriteProducts, setFavoriteProducts] = useState<Product[]>(() => {
+    try {
+      const stored = localStorage.getItem('favoriteProducts');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // save favorites to localStorage:
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        'favoriteProducts',
+        JSON.stringify(favoriteProducts)
+      );
+    } catch (error) {
+      console.error('Failed to save favorites to localStorage:', error);
+    }
+  }, [favoriteProducts]);
 
   const addToFavorites = (product: Product) => {
     setFavoriteProducts((prev) => {
