@@ -1,18 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../../Buttons/Button';
-import { User } from '../../../types/types';
 
 interface DesktopMenuProps {
   isAuthenticated: boolean;
   isAdmin: boolean;
-  user: User;
   logout: () => void;
 }
 
 export const DesktopMenu = ({
   isAuthenticated,
   isAdmin,
-  user,
   logout,
 }: DesktopMenuProps) => {
   return (

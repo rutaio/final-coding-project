@@ -18,7 +18,6 @@ export const Navigation = () => {
             isAuthenticated={isAuthenticated}
             isAdmin={isAdmin}
             logout={logout}
-            user={user}
           />
         </div>
         <div className="mobile-nav">
@@ -26,7 +25,6 @@ export const Navigation = () => {
             isAuthenticated={isAuthenticated}
             isAdmin={isAdmin}
             logout={logout}
-            user={user}
           />
         </div>
       </div>

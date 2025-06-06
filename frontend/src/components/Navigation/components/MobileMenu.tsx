@@ -3,19 +3,16 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '../../Buttons/Button';
-import { User } from '../../../types/types';
 
 interface MobileMenuProps {
   isAuthenticated: boolean;
   isAdmin: boolean;
-  user: User;
   logout: () => void;
 }
 
 export const MobileMenu = ({
   isAuthenticated,
   isAdmin,
-  user,
   logout,
 }: MobileMenuProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

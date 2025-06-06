@@ -1,5 +1,6 @@
 import './product-list.css';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../constants/global';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -12,9 +13,17 @@ export const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
-  const fetchProducts = async () => {
+  const [searchParams] = useSearchParams();
+  const categoryFromURL = searchParams.get('category');
+
+  const fetchProducts = async (category: string | null) => {
     try {
-      const response = await axios.get<Product[]>(`${API_URL}/products/public`);
+      const url =
+        !category || category === 'all'
+          ? `${API_URL}/products/public`
+          : `${API_URL}/products/public?category=${category}`;
+
+      const response = await axios.get<Product[]>(url);
       const approvedProducts = response.data.filter(
         (product) => product.status === 'approved'
       );
@@ -24,27 +33,9 @@ export const ProductList = () => {
     }
   };
 
-  const fetchProductsByCategory = async (category: string | null) => {
-    if (!category || category === 'all') {
-      fetchProducts();
-      return;
-    }
-    try {
-      const response = await axios.get<Product[]>(
-        `${API_URL}/products/public?category=${category}`
-      );
-      const approvedProducts = response.data.filter(
-        (p) => p.status === 'approved'
-      );
-      setProducts(approvedProducts);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    fetchProducts(categoryFromURL);
+  }, [categoryFromURL]);
 
   return (
     <>
@@ -60,7 +51,7 @@ export const ProductList = () => {
         </Button>
       </div>
 
-      <ProductFilters onChosenCategory={fetchProductsByCategory} />
+      <ProductFilters onChosenCategory={fetchProducts} />
 
       <div className="container">
         <div className="product-list">
