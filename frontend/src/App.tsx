@@ -7,7 +7,7 @@ import { ProductList } from './components/ProductList/ProductList';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
 import { ContactsPage } from './pages/ContactPage/ContactPage';
 import { Register } from './components/Forms/Register';
-import { Login } from './components/Forms/Login';
+import { Login } from './components/Login/Login';
 import { AuthProvider } from './contexts/AuthContext';
 import { UserProfile } from './components/UserProfile/UserProfile';
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
