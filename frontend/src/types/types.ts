@@ -21,10 +21,3 @@ export interface Product {
   createdAt: Date;
   updatedAt: Date;
 }
-
-export interface Messages {
-  _id: string;
-  name: string;
-  email: string;
-  message: string;
-}

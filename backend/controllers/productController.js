@@ -48,7 +48,6 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
-// works on postman
 exports.getProductById = async (req, res) => {
   try {
     const id = req.params.id;
@@ -66,7 +65,6 @@ exports.getProductById = async (req, res) => {
   }
 };
 
-// does not work on postman
 exports.createProduct = async (req, res) => {
   try {
     const newProduct = new Product({
