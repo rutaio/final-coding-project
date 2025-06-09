@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navigation } from './components/Navigation/Navigation';
 import { ProductList } from './components/ProductList/ProductList';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
-import { ContactsPage } from './pages/ContactPage/ContactPage';
 import { Register } from './components/Forms/Register';
 import { Login } from './components/Login/Login';
 import { AuthProvider } from './contexts/AuthContext';
@@ -28,7 +27,6 @@ function App() {
                 <Routes>
                   <Route path="/" element={<ProductList />} />
                   <Route path="/products/:id" element={<ProductDetails />} />
-                  <Route path="/contact" element={<ContactsPage />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/login" element={<Login />} />
 
