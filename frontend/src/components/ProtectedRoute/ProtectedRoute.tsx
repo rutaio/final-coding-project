@@ -8,10 +8,16 @@ interface ProtectedRouteProps {
 }
 
 export const ProtectedRoute = ({ requiredRole }: ProtectedRouteProps) => {
-  const { isAuthenticated, user } = useContext(AuthContext) as {
+  const { isAuthenticated, user, isLoading } = useContext(AuthContext) as {
     isAuthenticated: boolean;
     user: User | null;
+    isLoading: boolean;
   };
+
+  // Wait until loading is done before checking auth:
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
