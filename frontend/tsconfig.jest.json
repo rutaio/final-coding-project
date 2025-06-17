@@ -5,7 +5,13 @@
     "esModuleInterop": true,
     "module": "esnext",
     "types": ["jest", "node", "@testing-library/jest-dom"],
-    "lib": ["DOM", "ESNext"]
+    "lib": ["DOM", "ESNext"],
+    // added:
+    "allowJs": true,
+    // added to help TypeScript treat every file as an isolated unit:
+    "isolatedModules": true,
+    // added:
+    "noEmit": true
   },
   "include": [
     "src/**/*.ts",
