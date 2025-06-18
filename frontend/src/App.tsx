@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navigation } from './components/Navigation/Navigation';
 import { ProductList } from './components/ProductList/ProductList';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
-import { Register } from './components/Forms/Register';
+import { Register } from './components/Register/Register';
 import { Login } from './components/Login/Login';
 import { AuthProvider } from './contexts/AuthContext';
 import { UserProfile } from './components/UserProfile/UserProfile';
