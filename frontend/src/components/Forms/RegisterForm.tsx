@@ -82,6 +82,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
           required
         />
         {passwordError && <p className="error-message">{passwordError}</p>}
+        {error && <p className="error-message">{error}</p>}
       </div>
 
       <Button buttonType="primary" type="submit">
