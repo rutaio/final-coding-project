@@ -38,6 +38,7 @@
     "@types/react-dom": "^18.2.14",
     "@types/testing-library__react": "^10.0.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "babel-plugin-transform-import-meta": "^2.3.3",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
