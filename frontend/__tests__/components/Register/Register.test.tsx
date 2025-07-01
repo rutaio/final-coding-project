@@ -1,6 +1,12 @@
 // Testing if Register passes form data correctly to the register() function, which is inside AuthContext
-jest.mock('../../../src/constants/global');
 
+// mocking API for test to work:
+jest.mock('../../../src/constants/global', () => ({
+  API_URL: 'http://mocked-api-url.com',
+}));
+
+// using a router for test to work:
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Register } from '../../../src/components/Register/Register';
@@ -22,9 +28,11 @@ const mockContext = {
 describe('Register component', () => {
   it('calls register from context on form submit', async () => {
     render(
-      <AuthContext.Provider value={mockContext}>
-        <Register />
-      </AuthContext.Provider>
+      <MemoryRouter>
+        <AuthContext.Provider value={mockContext}>
+          <Register />
+        </AuthContext.Provider>
+      </MemoryRouter>
     );
 
     const nameInput = screen.getByLabelText('Your Full Name');
