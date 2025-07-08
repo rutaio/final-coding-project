@@ -13,6 +13,7 @@ import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 import { Footer } from './components/Footer/Footer';
 import { AdminDashboard } from './components/AdminDashboard/AdminDashboard';
 import { UserInterfaceProvider } from './contexts/UserInterfaceContext';
+import { ContactPage } from './pages/ContactPage/ContactPage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<ProductList />} />
                   <Route path="/products/:id" element={<ProductDetails />} />
+                  <Route path="/contact" element={<ContactPage />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/login" element={<Login />} />
 
