@@ -6,6 +6,7 @@ import { ThanksMessage } from '../ThanksMessage/ThanksMessage';
 
 export const ContactContainer = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleContactForm = async (
     name: string,
@@ -20,8 +21,9 @@ export const ContactContainer = () => {
       });
       setIsSubmitted(true);
       console.log('Thanks for contacting MUSEREST!');
-    } catch (error: any) {
-      console.error('Failed to send a message:', error);
+    } catch (error) {
+      // Show a user-friendly message in the UI:
+      setError('Something went wrong. Please try again later.');
     }
   };
 
@@ -35,6 +37,7 @@ export const ContactContainer = () => {
       ) : (
         <ContactForm onSubmit={handleContactForm} />
       )}
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 };

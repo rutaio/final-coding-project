@@ -5,6 +5,7 @@ interface ButtonProps {
   onClick?: () => void;
   buttonType?: 'primary' | 'secondary' | 'small';
   type?: 'button' | 'submit';
+  disabled?: boolean;
 }
 
 export const Button = ({
@@ -12,9 +13,15 @@ export const Button = ({
   onClick,
   buttonType = 'primary',
   type = 'button',
+  disabled = false,
 }: ButtonProps) => {
   return (
-    <button className={`button button-${buttonType}`} onClick={onClick} type={type}>
+    <button
+      className={`button button-${buttonType}`}
+      onClick={onClick}
+      type={type}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

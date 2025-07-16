@@ -1,5 +1,6 @@
 import { Button } from '../Buttons/Button';
 import { useState } from 'react';
+import '../Forms/forms.css';
 
 interface ContactFormProps {
   onSubmit: (name: string, email: string, message: string) => void;
@@ -9,6 +10,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [message, setMessage] = useState<string>('');
+
+  // check if entered email matches email's format:
+  const isValidEmail = (email: string): boolean =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,13 +39,17 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
       <div className="form-group">
         <label htmlFor="email">Your Email</label>
         <input
-          type="text"
+          type="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
+
+      {email && !isValidEmail(email) && (
+        <div className="error-message">Please enter a valid email address.</div>
+      )}
 
       <div className="form-group">
         <label htmlFor="message">Share your message:</label>
@@ -53,7 +62,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
         />
       </div>
 
-      <Button buttonType="primary" type="submit">
+      <Button
+        buttonType="primary"
+        type="submit"
+        disabled={!isValidEmail(email)}
+      >
         Send
       </Button>
     </form>

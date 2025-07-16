@@ -26,6 +26,14 @@ exports.createMessage = async (req, res) => {
       });
     }
 
+    // check if entered email matches email's format:
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!isEmailValid) {
+      return res.status(400).json({
+        error: 'Please enter a valid email address.',
+      });
+    }
+
     const newMessage = new Message({ name, email, message });
     await newMessage.save();
     res.status(201).json({
@@ -33,8 +41,12 @@ exports.createMessage = async (req, res) => {
       data: newMessage,
     });
   } catch (error) {
+    // Always log full error to the terminal:
+    console.error('Error creating message:', error);
+
+    // Return clean error message to frontend:
     res.status(500).json({
-      error: error.message || 'Failed to send a message through the server',
+      error: 'Something went wrong. Please try again later.',
     });
   }
 };
