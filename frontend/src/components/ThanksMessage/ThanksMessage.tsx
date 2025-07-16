@@ -1,3 +1,5 @@
+import './thanks-message.css';
+
 interface ThanksMessageProps {
   title?: string;
   message?: string;

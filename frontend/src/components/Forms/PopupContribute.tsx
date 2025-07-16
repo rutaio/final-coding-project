@@ -5,6 +5,7 @@ import { API_URL } from '../../constants/global';
 import { Button } from '../Buttons/Button';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Navigate } from 'react-router-dom';
+import { ThanksMessage } from '../ThanksMessage/ThanksMessage';
 
 interface PopupContributeProps {
   onPopupClose: () => void;
@@ -57,14 +58,13 @@ export const PopupContribute: React.FC<PopupContributeProps> = ({
   return (
     <div className="overlay-container">
       {isSubmitted ? (
-        <div className='thanks-banner'>
-          <div className="thanks-message">
-            <p>
-              Thanks for your contribution! Our museum curator is now carefully
+        <div className="popup-thanks-message">
+          <ThanksMessage
+            title="Thanks for your contribution!"
+            message="Our museum curator is now carefully
               reviewing your submission. Wait for a few days until it is live on
-              Museum of Rest!
-            </p>
-          </div>
+              Museum of Rest!"
+          />
           <Button onClick={onPopupClose} buttonType="primary">
             Close
           </Button>
