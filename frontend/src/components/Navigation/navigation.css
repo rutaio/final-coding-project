@@ -99,6 +99,8 @@
     list-style: none;
     padding: 2rem;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   }
 
   .mobile-menu button {

@@ -33,6 +33,11 @@ export const MobileMenu = ({
               Home
             </Link>
           </li>
+          <li>
+            <Link to="/contact" onClick={handleClick}>
+              Contact
+            </Link>
+          </li>
           {isAuthenticated ? (
             <>
               {isAdmin ? (
