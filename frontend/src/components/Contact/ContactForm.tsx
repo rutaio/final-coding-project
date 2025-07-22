@@ -1,12 +1,18 @@
 import { Button } from '../Buttons/Button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../Forms/forms.css';
 
 interface ContactFormProps {
   onSubmit: (name: string, email: string, message: string) => void;
+  error?: string | null;
+  shouldReset?: boolean;
 }
 
-export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({
+  onSubmit,
+  error,
+  shouldReset,
+}) => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [message, setMessage] = useState<string>('');
@@ -18,10 +24,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(name, email, message);
-    setName('');
-    setEmail('');
-    setMessage('');
   };
+
+  useEffect(() => {
+    if (shouldReset) {
+      setName('');
+      setEmail('');
+      setMessage('');
+    }
+  }, [shouldReset]);
 
   return (
     <form onSubmit={handleSubmit} className="form">
@@ -32,7 +43,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          required
         />
       </div>
 
@@ -61,6 +71,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
           onChange={(e) => setMessage(e.target.value)}
         />
       </div>
+
+      {error && <div className="error-message">{error}</div>}
 
       <Button
         buttonType="primary"

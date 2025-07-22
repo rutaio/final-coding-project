@@ -7,6 +7,7 @@ import { ThanksMessage } from '../ThanksMessage/ThanksMessage';
 export const ContactContainer = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [shouldResetForm, setShouldResetForm] = useState(false);
 
   const handleContactForm = async (
     name: string,
@@ -20,10 +21,15 @@ export const ContactContainer = () => {
         message,
       });
       setIsSubmitted(true);
+      setShouldResetForm(true);
+      setError(null);
       console.log('Thanks for contacting MUSEREST!');
-    } catch (error) {
-      // Show a user-friendly message in the UI:
-      setError('Something went wrong. Please try again later.');
+    } catch (error: any) {
+      const backendMessage = error?.response?.data?.error;
+      setError(
+        backendMessage || 'Something went wrong. Please try again later.'
+      );
+      setShouldResetForm(false); // do not clear the form (because user may want to see it..)
     }
   };
 
@@ -35,9 +41,8 @@ export const ContactContainer = () => {
           message="Museum will be in touch with you shortly."
         />
       ) : (
-        <ContactForm onSubmit={handleContactForm} />
+        <ContactForm onSubmit={handleContactForm} error={error} shouldReset={shouldResetForm} />
       )}
-      {error && <div className="error-message">{error}</div>}
     </div>
   );
 };
