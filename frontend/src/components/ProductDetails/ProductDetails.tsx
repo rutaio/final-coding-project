@@ -97,6 +97,7 @@ export const ProductDetails = () => {
         <div className="product-detail-text">
           <div className="product-header">
             <h2>{product.title}</h2>
+            {/* {product.maker} */}
           </div>
           <div className="product-description">
             <p>{product.description}</p>
@@ -111,9 +112,7 @@ export const ProductDetails = () => {
                 buttonType="primary"
                 type="button"
               >
-                {isFavorite
-                  ? 'Remove from favorites'
-                  : 'Save to favorites'}
+                {isFavorite ? 'Remove from favorites' : 'Save to favorites'}
               </Button>
             ) : null}
 
