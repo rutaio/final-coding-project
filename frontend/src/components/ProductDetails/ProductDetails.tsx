@@ -97,7 +97,7 @@ export const ProductDetails = () => {
         <div className="product-detail-text">
           <div className="product-header">
             <h2>{product.title}</h2>
-            {/* {product.maker} */}
+            {product.maker ? <h5>Creator: {product.maker}</h5> : null}
           </div>
           <div className="product-description">
             <p>{product.description}</p>
