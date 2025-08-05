@@ -33,7 +33,7 @@ const productSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ['visual' | 'audio' | 'tactile' | 'scented' | 'edible'],
+      enum: ['visual', 'audio', 'tactile', 'scented', 'edible'],
     },
     // I want to keep this for the future features when I integrate adding data through APIs:
     source: {
@@ -58,8 +58,8 @@ const productSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      enum: ['under review', 'approved', 'rejected'],
-      default: 'under review',
+      enum: ['under-review', 'approved', 'rejected'],
+      default: 'under-review',
     },
   },
   { timestamps: true, collection: 'products' }
