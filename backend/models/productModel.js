@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { generateSlug } = require('../middleware/productMiddleware');
 
 const productSchema = new mongoose.Schema(
   {
@@ -20,6 +21,10 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+    },
+    slug: {
+      type: String,
+      unique: true,
     },
     materials: {
       type: Array,
@@ -59,5 +64,7 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true, collection: 'products' }
 );
+
+productSchema.pre('save', generateSlug);
 
 module.exports = mongoose.model('Product', productSchema);
