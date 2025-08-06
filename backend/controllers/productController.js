@@ -21,6 +21,23 @@ exports.getPublicProducts = async (req, res) => {
   }
 };
 
+// new product links with slugs:
+exports.getProductBySlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+    const product = await Product.findOne({ slug });
+
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    res.status(200).json(product);
+  } catch (error) {
+    console.error('Error fetching product by slug:', error);
+    res.status(500).json({ error: 'Server error fetching product by slug' });
+  }
+};
+
 // For logged-in user (product submissions):
 exports.getMyProducts = async (req, res) => {
   try {

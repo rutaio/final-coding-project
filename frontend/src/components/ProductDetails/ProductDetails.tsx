@@ -12,7 +12,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 export const ProductDetails = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { slug } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
   const { favoriteProducts, addToFavorites, removeFromFavorites } =
     useContext(UserInterfaceContext);
@@ -70,14 +70,14 @@ export const ProductDetails = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${API_URL}/products/${id}`);
+        const response = await axios.get(`${API_URL}/products/slug/${slug}`);
         setProduct(response.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchProducts();
-  }, [id]);
+  }, [slug]);
 
   if (!product) {
     return <div>No such a product in our collection!</div>;

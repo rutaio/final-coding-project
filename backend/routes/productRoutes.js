@@ -12,8 +12,12 @@ router.get('/my', authMiddleware, productsController.getMyProducts);
 // Admin sees all products (as a table):
 router.get('/admin', authMiddleware, productsController.getAllProducts);
 
-// Publicly visible product by id for each product (?):
+// NEW - products will use slugs from now on:
+router.get('/slug/:slug', productsController.getProductBySlug); // this allows to visit a product directly via slug 
+
+// Previously set products by id (useful to have for admins):
 router.get('/:id', productsController.getProductById);
+
 router.post('/', authMiddleware, productsController.createProduct);
 
 // Admin must approve or reject all submitted products before they show up to the public;

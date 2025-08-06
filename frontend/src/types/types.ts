@@ -11,6 +11,7 @@ export interface Product {
   _id: string;
   title: string;
   maker: string;
+  slug: string;
   description: string;
   image: string;
   materials: string[];
