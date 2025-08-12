@@ -29,7 +29,7 @@ export const FavoriteProducts = () => {
               <Button
                 type="button"
                 buttonType="small"
-                onClick={() => navigate(`/products/${product._id}`)}
+                onClick={() => navigate(`/artefacts/${product._id}`)}
               >
                 View
               </Button>,

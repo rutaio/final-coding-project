@@ -74,7 +74,7 @@ export const PopupContribute: React.FC<PopupContributeProps> = ({
           <h2>Contribute to the Museum of Rest</h2>
           <form onSubmit={handleFormSubmit} className="form">
             <div className="form-group">
-              <label htmlFor="title">What's the name of the object?</label>
+              <label htmlFor="title">What's the name of this artefact?</label>
               <input
                 type="text"
                 id="title"
@@ -85,7 +85,7 @@ export const PopupContribute: React.FC<PopupContributeProps> = ({
 
             <div className="form-group">
               <label htmlFor="description">
-                Describe how this object was used:
+                Describe how this artefact was used:
               </label>
               <textarea
                 id="description"
