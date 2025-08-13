@@ -14,6 +14,7 @@ import { Footer } from './components/Footer/Footer';
 import { AdminDashboard } from './components/AdminDashboard/AdminDashboard';
 import { UserInterfaceProvider } from './contexts/UserInterfaceContext';
 import { ContactPage } from './pages/ContactPage/ContactPage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
@@ -42,6 +43,8 @@ function App() {
                   <Route path="/profile" element={<ProtectedRoute />}>
                     <Route index element={<UserProfile />} />
                   </Route>
+
+                  <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </main>
               <Footer />
