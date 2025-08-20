@@ -8,6 +8,7 @@ import { Product } from '../../types/types';
 import { PopupContribute } from '../Forms/PopupContribute';
 import { Button } from '../Buttons/Button';
 import { ProductCategories } from '../ProductFilters/ProductCategories';
+import { Hero } from '../Hero/Hero';
 
 export const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -47,7 +48,7 @@ export const ProductList = () => {
 
   return (
     <>
-      <div className="hero">
+      <Hero>
         <h1>How do humans rest?</h1>
         <p>
           Discover things that have shaped human behaviour and encouraged rest
@@ -57,7 +58,7 @@ export const ProductList = () => {
         <Button buttonType="primary" onClick={() => setIsPopupVisible(true)}>
           Contribute
         </Button>
-      </div>
+      </Hero>
 
       {/* needed for Footer links to scroll to the correct place: */}
       <div ref={productListRef}>

@@ -1,6 +1,6 @@
 import { Button } from '../../components/Buttons/Button';
 import { useNavigate } from 'react-router-dom';
-import { Container } from '../../components/Container/Container';
+import { Hero } from '../../components/Hero/Hero';
 
 export const NotFoundPage = () => {
   const navigate = useNavigate();
@@ -10,15 +10,15 @@ export const NotFoundPage = () => {
   };
 
   return (
-    <Container>
+    <Hero className='container-min-height'>
       <h1>Page not found</h1>
-      <p className="description">
+      <p>
         What you're looking for is not here. Try visiting our homepage instead?
       </p>
 
       <Button buttonType="secondary" type="button" onClick={handleBackClick}>
         Go to Homepage
       </Button>
-    </Container>
+    </Hero>
   );
 };

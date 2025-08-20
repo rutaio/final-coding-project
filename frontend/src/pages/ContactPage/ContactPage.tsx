@@ -1,15 +1,15 @@
 import { ContactContainer } from '../../components/Contact/ContactContainer';
-import './contact-page.css';
+import { Container } from '../../components/Container/Container';
 
 export const ContactPage = () => {
   return (
-    <main className="page-container">
+    <Container>
       <h1>Contact about Collaborations?</h1>
-      <p className="page-description">
+      <p>
         Curious about collaborations? Contact our Museum to start a
         conversation.
       </p>
       <ContactContainer />
-    </main>
+    </Container>
   );
 };
