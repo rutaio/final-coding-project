@@ -28,10 +28,8 @@ export const ProductList = () => {
           : `${API_URL}/products/public?category=${category}`;
 
       const response = await axios.get<Product[]>(url);
-      const approvedProducts = response.data.filter(
-        (product) => product.status === 'approved'
-      );
-      setProducts(approvedProducts);
+      // no need to filter in frontend, if filtering happens in backend. :)
+      setProducts(response.data);
     } catch (error) {
       console.log(error);
     }
