@@ -13,6 +13,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 export const ProductDetails = () => {
   const navigate = useNavigate();
   const { slug } = useParams();
+  const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState<Product | null>(null);
   const { favoriteProducts, addToFavorites, removeFromFavorites } =
     useContext(UserInterfaceContext);
@@ -74,13 +75,19 @@ export const ProductDetails = () => {
         setProduct(response.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchProducts();
   }, [slug]);
 
+  if (loading) {
+    return <div>Loading artefact details..</div>;
+  }
+
   if (!product) {
-    return <div>No such a product in our collection!</div>;
+    return <div>No such artefact in our collection yet.</div>;
   }
 
   return (
