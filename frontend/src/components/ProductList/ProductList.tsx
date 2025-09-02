@@ -11,6 +11,7 @@ import { ProductCategories } from '../ProductFilters/ProductCategories';
 import { Hero } from '../Hero/Hero';
 
 export const ProductList = () => {
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
@@ -22,6 +23,7 @@ export const ProductList = () => {
 
   const fetchProducts = async (category: string | null) => {
     try {
+      setLoading(true);
       const url =
         !category || category === 'all'
           ? `${API_URL}/products/public`
@@ -32,6 +34,8 @@ export const ProductList = () => {
       setProducts(response.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -65,7 +69,9 @@ export const ProductList = () => {
 
       <div className="product-list-container">
         <div className="product-list">
-          {products.length === 0 ? (
+          {loading ? (
+            <p>Hold on, loading all artefacts...</p>
+          ) : products.length === 0 ? (
             <p>No products found. Check back soon!</p>
           ) : (
             products.map((product) => (
