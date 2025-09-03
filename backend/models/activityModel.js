@@ -27,7 +27,7 @@ const activitySchema = new mongoose.Schema(
     // To associate many products with an activity:
     products: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, // Each item in the products array is just an ID
         ref: 'Product',
       },
     ],
