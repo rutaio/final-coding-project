@@ -20,12 +20,14 @@ const PORT = process.env.PORT || 3001;
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('Connected to MongoDB');
+    // console.log('Connected to MongoDB');
+    console.log(`Connected to MongoDB at ${new Date().toISOString()}`);
   })
   .catch((error) => {
     console.log('Error connecting to MongoDB', error);
   });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server started at ${new Date().toISOString()}`);
+  //  console.log(`Server is running on http://localhost:${PORT}`);
 });
