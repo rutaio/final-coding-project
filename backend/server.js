@@ -17,6 +17,12 @@ app.use('/api/messages', messageRoutes);
 
 const PORT = process.env.PORT || 3001;
 
+// Used by UptimeRobot to prevent cold starts (not showing products in UI for a few seconds..):
+app.get('/ping', (req, res) => {
+  console.log(`Ping received at ${new Date().toISOString()}`);
+  res.send('pong');
+});
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
