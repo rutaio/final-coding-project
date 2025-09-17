@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('../utils/loadEnv');
 const mongoose = require('mongoose');
 const Activity = require('../models/activityModel');
 const Product = require('../models/productModel');

@@ -28,7 +28,7 @@
 // runSimulatedUpdate();
 
 // MY REAL SCRIPT:
-require('dotenv').config();
+require('../utils/loadEnv');
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 const Product = require('../models/productModel');
