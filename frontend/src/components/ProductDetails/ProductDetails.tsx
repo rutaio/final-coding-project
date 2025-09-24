@@ -18,6 +18,7 @@ export const ProductDetails = () => {
   const { favoriteProducts, addToFavorites, removeFromFavorites } =
     useContext(UserInterfaceContext);
   const { user } = useContext(AuthContext);
+  const [activities, setActivities] = useState([]);
 
   let isFavorite;
 
@@ -89,6 +90,21 @@ export const ProductDetails = () => {
   if (!product) {
     return <div>No such artefact in our collection yet.</div>;
   }
+
+  // add new feature - show activities mini cards related to this product:
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const response = await axios.get(
+          `${API_URL}/activities/product/${product._id}`
+        );
+        setActivities(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchActivities();
+  }, [product._id]);
 
   return (
     <div className="product-detail">
