@@ -9,6 +9,8 @@ import { useContext } from 'react';
 import { UserInterfaceContext } from '../../contexts/UserInterfaceContext';
 import { toast, Zoom } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthContext';
+import { ActivityMiniCard } from '../ActivityMiniCard/ActivityMiniCard';
+import { Activity } from '../../types/types';
 
 export const ProductDetails = () => {
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ export const ProductDetails = () => {
   const { favoriteProducts, addToFavorites, removeFromFavorites } =
     useContext(UserInterfaceContext);
   const { user } = useContext(AuthContext);
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState<Activity[]>([]);
 
   let isFavorite;
 
@@ -69,18 +71,46 @@ export const ProductDetails = () => {
     navigate('/');
   };
 
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //    try {
+  //      const response = await axios.get(`${API_URL}/products/slug/${slug}`);
+  //     setProduct(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //    } finally {
+  //      setLoading(false);
+  //    }
+  //  };
+  //  fetchProducts();
+  // }, [slug]);
+
+  // trying merged useEffect:
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProductAndActivities = async () => {
       try {
-        const response = await axios.get(`${API_URL}/products/slug/${slug}`);
-        setProduct(response.data);
+        // fetch product
+        const productResponse = await axios.get(
+          `${API_URL}/products/slug/${slug}`
+        );
+        const productData = productResponse.data;
+        setProduct(productData);
+
+        // fetch related activities
+        if (productData?._id) {
+          const activitiesResponse = await axios.get(
+            `${API_URL}/activities/product/${productData._id}`
+          );
+          setActivities(activitiesResponse.data);
+        }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
         setLoading(false);
       }
     };
-    fetchProducts();
+
+    fetchProductAndActivities();
   }, [slug]);
 
   if (loading) {
@@ -92,19 +122,21 @@ export const ProductDetails = () => {
   }
 
   // add new feature - show activities mini cards related to this product:
-  useEffect(() => {
-    const fetchActivities = async () => {
-      try {
-        const response = await axios.get(
-          `${API_URL}/activities/product/${product._id}`
-        );
-        setActivities(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchActivities();
-  }, [product._id]);
+  // useEffect(() => {
+  //  if (!product) return; // only run after product has loaded
+  //
+  //   const fetchActivities = async () => {
+  //      try {
+  //       const response = await axios.get(
+  //        `${API_URL}/activities/product/${product._id}`
+  //      );
+  //      setActivities(response.data);
+  //    } catch (error) {
+  //      console.log(error);
+  //    }
+  //   };
+  //  fetchActivities();
+  // }, [product]);
 
   return (
     <div className="product-detail">
@@ -147,6 +179,17 @@ export const ProductDetails = () => {
               Go back
             </Button>
           </div>
+        </div>
+
+        <div>
+          {activities.length > 0 && (
+            <div className="related-activities">
+              <h4>Related Activities</h4>
+              {activities.map((activity) => (
+                <ActivityMiniCard key={activity._id} activity={activity} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

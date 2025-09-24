@@ -23,3 +23,10 @@ export interface Product {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface Activity {
+  _id: string;
+  title: string;
+  image: string;
+  slug: string;
+}
