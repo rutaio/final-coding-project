@@ -1,4 +1,5 @@
 import { Activity } from '../../types/types';
+import './activity-mini-card.css';
 
 interface ActivityMiniCardProps {
   activity: Activity;
