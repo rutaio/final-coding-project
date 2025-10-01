@@ -9,10 +9,17 @@ const activitySchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    // for frontend:
     description: {
       type: String,
       required: true,
       trim: true,
+    },
+    // data from wikipedia:
+    wiki: {
+      title: String,
+      url: String,
+      revisionID: Number,
     },
     image: {
       type: String,
