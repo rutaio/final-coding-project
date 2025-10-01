@@ -71,21 +71,6 @@ export const ProductDetails = () => {
     navigate('/');
   };
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //    try {
-  //      const response = await axios.get(`${API_URL}/products/slug/${slug}`);
-  //     setProduct(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //    } finally {
-  //      setLoading(false);
-  //    }
-  //  };
-  //  fetchProducts();
-  // }, [slug]);
-
-  // trying merged useEffect:
   useEffect(() => {
     const fetchProductAndActivities = async () => {
       try {
@@ -96,7 +81,7 @@ export const ProductDetails = () => {
         const productData = productResponse.data;
         setProduct(productData);
 
-        // fetch related activities
+        // fetch related activities, only if product loaded:
         if (productData?._id) {
           const activitiesResponse = await axios.get(
             `${API_URL}/activities/product/${productData._id}`
@@ -120,23 +105,6 @@ export const ProductDetails = () => {
   if (!product) {
     return <div>No such artefact in our collection yet.</div>;
   }
-
-  // add new feature - show activities mini cards related to this product:
-  // useEffect(() => {
-  //  if (!product) return; // only run after product has loaded
-  //
-  //   const fetchActivities = async () => {
-  //      try {
-  //       const response = await axios.get(
-  //        `${API_URL}/activities/product/${product._id}`
-  //      );
-  //      setActivities(response.data);
-  //    } catch (error) {
-  //      console.log(error);
-  //    }
-  //   };
-  //  fetchActivities();
-  // }, [product]);
 
   return (
     <div className="product-detail">
@@ -181,7 +149,7 @@ export const ProductDetails = () => {
           </div>
         </div>
 
-        <div>
+        <>
           {activities.length > 0 && (
             <div className="related-activities">
               <h4>Related Activities</h4>
@@ -190,7 +158,7 @@ export const ProductDetails = () => {
               ))}
             </div>
           )}
-        </div>
+        </>
       </div>
     </div>
   );
