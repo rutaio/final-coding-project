@@ -27,6 +27,7 @@ export interface Product {
 export interface Activity {
   _id: string;
   title: string;
+  description: string;
   image: string;
   slug: string;
 }

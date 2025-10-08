@@ -15,6 +15,7 @@ import { AdminDashboard } from './components/AdminDashboard/AdminDashboard';
 import { UserInterfaceProvider } from './contexts/UserInterfaceContext';
 import { ContactPage } from './pages/ContactPage/ContactPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
+import { ActivityDetails } from './components/ActivityDetails/ActivityDetails';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<ProductList />} />
                   <Route path="/artefacts/:slug" element={<ProductDetails />} />
+                  <Route path="/activities/:slug" element={<ActivityDetails />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/login" element={<Login />} />
