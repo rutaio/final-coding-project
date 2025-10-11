@@ -1,6 +1,55 @@
+.activity-mini-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  text-align: right;
+  padding: 2rem;
+  border: solid 1px #ffff99;
+  margin-bottom: 1rem;
+}
+
 .activity-mini-card-image {
   width: 120px;
   height: 120px;
   object-fit: cover;
   display: block;
+}
+
+.activity-mini-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent 30%,
+    rgba(0, 255, 255, 0.3)
+  );
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.activity-mini-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 10px #ffff99;
+}
+
+.activity-mini-card:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+.activity-mini-card-title {
+  text-align: left;
+  line-height: normal;
+  padding-top: 0.5rem;
+}
+
+.activity-mini-card-title a {
+  text-decoration: none;
 }

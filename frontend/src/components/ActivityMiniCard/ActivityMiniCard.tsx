@@ -13,8 +13,9 @@ export const ActivityMiniCard = ({ activity }: ActivityMiniCardProps) => {
         alt="Activity cover image"
         className="activity-mini-card-image"
       />
-      <h5> {activity.title}</h5>
-      {/* Later: link to activity details page */}
+      <h4 className="activity-mini-card-title">
+        <a href={`/activities/${activity.slug}`}>{activity.title}</a>
+      </h4>
     </div>
   );
 };

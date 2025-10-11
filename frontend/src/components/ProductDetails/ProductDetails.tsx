@@ -152,7 +152,7 @@ export const ProductDetails = () => {
         <>
           {activities.length > 0 && (
             <div className="related-activities">
-              <h4>Related Activities</h4>
+              <h5>Related Activities</h5>
               {activities.map((activity) => (
                 <ActivityMiniCard key={activity._id} activity={activity} />
               ))}
