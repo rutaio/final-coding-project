@@ -30,4 +30,8 @@ export interface Activity {
   description: string;
   image: string;
   slug: string;
+  wiki: {
+    title: string;
+    url: string;
+  };
 }

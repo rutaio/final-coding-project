@@ -54,6 +54,14 @@ export const ActivityDetails = () => {
           <div className="product-description">
             <p>{activity?.description}</p>
           </div>
+          <div>
+            <h5>
+              Source:{' '}
+              <a href={activity?.wiki.url}>
+                {activity?.wiki.title} on Wikipedia
+              </a>
+            </h5>
+          </div>
         </div>
       </div>
     </div>
