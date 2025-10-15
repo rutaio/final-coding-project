@@ -45,10 +45,14 @@ async function updateActivity(slug, data) {
     }
 
     // take only first paragraph for me
-    const firstParagraph = (data.extract || '').split('\n')[0].trim();
+    // BUT find the first non-empty line:
+    const firstParagraph = (data.extract || '')
+      .split('\n')
+      .find((line) => line.trim().length > 0)
+      ?.trim();
 
     if (!firstParagraph) {
-      console.log(`No text found for "${slug}"`);
+      console.warn(`No text found for "${slug}"`);
       return;
     }
 
@@ -61,7 +65,7 @@ async function updateActivity(slug, data) {
     };
 
     await activity.save();
-    console.log(`Updated activity: ${slug}`);
+    console.log(`Updated activity: "${slug}"`);
   } catch (error) {
     console.error(`Error updating "${slug}":`, error.message);
   }
@@ -69,11 +73,30 @@ async function updateActivity(slug, data) {
 
 // My main script here:
 async function run() {
+  let updated = 0;
+  let skipped = 0;
+  let missing = 0;
+
   try {
     await mongoose.connect(MONGO_URI);
     console.log('Connnected to MongoDB');
 
     for (const [slug, title] of Object.entries(wikiMap)) {
+      const activity = await Activity.findOne({ slug });
+
+      // Skip if already has data:
+      if (activity?.description && activity?.wiki?.url) {
+        console.log(`Skipped "${slug}" already has data`);
+        skipped++; // Keep count for summary at the end
+        continue;
+      }
+
+      if (!activity) {
+        console.log(`No activity found for "${slug}"`);
+        missing++; // Keep count for summary at the end
+        continue;
+      }
+
       try {
         const data = await fetchWikiParagraphs(title);
         await updateActivity(slug, data);
