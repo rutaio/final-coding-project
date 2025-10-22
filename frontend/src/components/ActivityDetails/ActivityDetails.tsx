@@ -1,14 +1,16 @@
 import '../ProductDetails/product-details.css';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { API_URL } from '../../constants/global';
 import axios from 'axios';
 import { Activity } from '../../types/types';
+import { Button } from '../Buttons/Button';
 
 export const ActivityDetails = () => {
   const [activity, setActivity] = useState<Activity | null>(null);
   const [loading, setLoading] = useState(true);
   const { slug } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchActivities = async () => {
@@ -36,6 +38,10 @@ export const ActivityDetails = () => {
     return <div>No such activity in our museum.</div>;
   }
 
+  const handleBackClick = () => {
+    navigate('/');
+  };
+
   return (
     <div className="product-detail">
       <div className="product-detail-container">
@@ -61,6 +67,15 @@ export const ActivityDetails = () => {
                 {activity?.wiki.title} on Wikipedia
               </a>
             </h5>
+          </div>
+          <div className="product-actions">
+            <Button
+              buttonType="secondary"
+              type="button"
+              onClick={handleBackClick}
+            >
+              Back
+            </Button>
           </div>
         </div>
       </div>
