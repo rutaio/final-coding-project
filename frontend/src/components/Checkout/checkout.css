@@ -1,0 +1,25 @@
+.checkout-form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 1000px;
+}
+
+.right-container,
+.left-container {
+  background-color: #c7deef;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 10px #ffff99;
+}
+
+@media (max-width: 768px) {
+  .checkout-form-wrapper {
+    flex-direction: column;
+  }
+}

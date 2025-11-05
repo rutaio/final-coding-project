@@ -17,6 +17,7 @@ import { ContactPage } from './pages/ContactPage/ContactPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ActivityDetails } from './components/ActivityDetails/ActivityDetails';
 import { MemberCard } from './components/MemberCard/MemberCard';
+import { Checkout } from './components/Checkout/Checkout';
 
 function App() {
   return (
@@ -31,8 +32,12 @@ function App() {
                 <Routes>
                   <Route path="/" element={<ProductList />} />
                   <Route path="/artefacts/:slug" element={<ProductDetails />} />
-                  <Route path="/activities/:slug" element={<ActivityDetails />} />
+                  <Route
+                    path="/activities/:slug"
+                    element={<ActivityDetails />}
+                  />
                   <Route path="/member-card" element={<MemberCard />} />
+                  <Route path="/checkout" element={<Checkout />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/login" element={<Login />} />
