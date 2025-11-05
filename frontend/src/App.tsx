@@ -16,6 +16,7 @@ import { UserInterfaceProvider } from './contexts/UserInterfaceContext';
 import { ContactPage } from './pages/ContactPage/ContactPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ActivityDetails } from './components/ActivityDetails/ActivityDetails';
+import { MemberCard } from './components/MemberCard/MemberCard';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
                   <Route path="/" element={<ProductList />} />
                   <Route path="/artefacts/:slug" element={<ProductDetails />} />
                   <Route path="/activities/:slug" element={<ActivityDetails />} />
+                  <Route path="/member-card" element={<MemberCard />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/login" element={<Login />} />
